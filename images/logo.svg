@@ -1,0 +1,19 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#102D4F;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1685D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#48B8D8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Glass icon -->
+  <path d="M30 10 L40 50 L55 50 L65 10 Z" fill="none" stroke="#102D4F" stroke-width="3"/>
+  <path d="M30 10 L40 50 L35 50 L25 10 Z" fill="#FFFFFF" stroke="#102D4F" stroke-width="2"/>
+  <path d="M55 50 L65 10 L60 10 L50 50 Z" fill="#FFFFFF" stroke="#102D4F" stroke-width="2"/>
+  <circle cx="48" cy="30" r="8" fill="#1685D4"/>
+  <circle cx="48" cy="30" r="4" fill="#FFFFFF"/>
+  
+  <!-- Text -->
+  <text x="75" y="20" font-family="Playfair Display, serif" font-size="16" font-weight="800" fill="#102D4F">MAA MANSA</text>
+  <text x="75" y="45" font-family="Playfair Display, serif" font-size="16" font-weight="800" fill="#1685D4">DEVI GLASS WORK</text>
+</svg>

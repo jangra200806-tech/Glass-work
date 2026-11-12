@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - MAA MANSA DEVI GLASS WORKS</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="stylesheet" href="css/style.css?v=20261112v">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="images/logo.svg" alt="MAA MANSA DEVI GLASS WORKS logo" width="210" height="60">
+      </div>
+      <ul class="nav-links">
+        <li><a href="/" style="color:var(--white)">Website</a></li>
+        <li><button id="admin-logout" style="background:none;border:none;color:var(--white);cursor:pointer;font:inherit">Logout</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="admin-wrap">
+
+    <!-- Login -->
+    <div id="admin-login" class="auth-box">
+      <h2 style="margin-bottom:1rem;color:var(--navy)">Admin Login</h2>
+      <input type="password" id="admin-password" placeholder="Password">
+      <button id="admin-login-btn">Login</button>
+      <div id="login-msg" style="margin-top:1rem;color:var(--danger);font-weight:bold;"></div>
+    </div>
+
+    <!-- Dashboard (hidden by default) -->
+    <div id="admin-dashboard" class="hide">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h2 style="color:var(--navy)">Admin Panel</h2>
+      </div>
+
+      <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+        <button class="tab-btn active" data-tab="products">Products</button>
+        <button class="tab-btn" data-tab="projects">Projects</button>
+        <button class="tab-btn" data-tab="enquiries">Enquiries</button>
+      </div>
+
+      <!-- Products -->
+      <div id="tab-products" class="tab-panel">
+        <div class="admin-card">
+          <h3>Add / Edit Product</h3>
+          <form class="admin-form" id="product-form">
+            <input type="hidden" id="prod-id">
+            <input type="text" id="prod-title" placeholder="Title" required>
+            <input type="text" id="prod-category" placeholder="Category (Glass, Aluminium, etc.)" required>
+            <textarea id="prod-desc" placeholder="Description" rows="2"></textarea>
+            <input type="text" id="prod-image" placeholder="Image URL (optional)">
+            <button type="submit">Save</button>
+            <button type="button" id="prod-reset" class="secondary">Cancel</button>
+          </form>
+        </div>
+
+        <div class="admin-card">
+          <h3>Product List</h3>
+          <table id="products-table">
+            <thead>
+              <tr><th>Title</th><th>Category</th><th>Image</th><th>Action</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div id="tab-projects" class="tab-panel hide">
+        <div class="admin-card">
+          <h3>Add / Edit Project</h3>
+          <form class="admin-form" id="project-form">
+            <input type="hidden" id="proj-id">
+            <input type="text" id="proj-title" placeholder="Title" required>
+            <input type="text" id="proj-category" placeholder="Category" required>
+            <textarea id="proj-desc" placeholder="Description" rows="2"></textarea>
+            <input type="file" id="proj-image-file" accept="image/jpeg,image/png,image/webp">
+            <input type="text" id="proj-image-url" placeholder="Or Image URL (optional)">
+            <button type="submit">Save</button>
+            <button type="button" id="proj-reset" class="secondary">Cancel</button>
+          </form>
+        </div>
+
+        <div class="admin-card">
+          <h3>Project List</h3>
+          <table id="projects-table">
+            <thead>
+              <tr><th>Title</th><th>Category</th><th>Image</th><th>Action</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Enquiries -->
+      <div id="tab-enquiries" class="tab-panel hide">
+        <div class="admin-card">
+          <h3>Customer Enquiries</h3>
+          <table id="enquiries-table">
+            <thead>
+              <tr><th>Name</th><th>Phone</th><th>Message</th><th>Date</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

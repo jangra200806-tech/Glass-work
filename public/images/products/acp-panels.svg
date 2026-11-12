@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">ACP panel facade cladding</title>
+  <desc id="desc">Illustration of a modern building facade with aluminium composite panel cladding.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102D4F"/>
+      <stop offset="0.6" stop-color="#1170B5"/>
+      <stop offset="1" stop-color="#1685D4"/>
+    </linearGradient>
+    <linearGradient id="panel1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#48B8D8"/>
+      <stop offset="1" stop-color="#1685D4"/>
+    </linearGradient>
+    <linearGradient id="panel2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4F7FA"/>
+      <stop offset="1" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="panel3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#48B8D8"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="520" fill="url(#bg)"/>
+  <circle cx="690" cy="84" r="190" fill="#48B8D8" opacity="0.14"/>
+  <circle cx="104" cy="446" r="180" fill="#FFFFFF" opacity="0.05"/>
+
+  <!-- building base -->
+  <rect x="106" y="46" width="588" height="408" rx="10" fill="#102D4F" opacity="0.38"/>
+  <rect x="120" y="58" width="560" height="390" rx="6" fill="#E2E8F0"/>
+
+  <!-- header band -->
+  <rect x="120" y="58" width="560" height="44" fill="#102D4F"/>
+  <rect x="142" y="76" width="128" height="8" rx="4" fill="#48B8D8"/>
+  <rect x="292" y="76" width="76" height="8" rx="4" fill="#FFFFFF" opacity="0.75"/>
+  <rect x="390" y="76" width="42" height="8" rx="4" fill="#48B8D8" opacity="0.7"/>
+
+  <!-- panel grid -->
+  <g stroke="#102D4F" stroke-opacity="0.28" stroke-width="4">
+    <rect x="136" y="118" width="122" height="92" fill="url(#panel2)"/>
+    <rect x="266" y="118" width="122" height="92" fill="url(#panel1)"/>
+    <rect x="396" y="118" width="122" height="92" fill="url(#panel3)"/>
+    <rect x="526" y="118" width="138" height="92" fill="url(#panel2)"/>
+
+    <rect x="136" y="218" width="122" height="92" fill="url(#panel1)"/>
+    <rect x="266" y="218" width="122" height="92" fill="url(#panel2)"/>
+    <rect x="396" y="218" width="122" height="92" fill="url(#panel2)"/>
+    <rect x="526" y="218" width="138" height="92" fill="url(#panel1)"/>
+
+    <rect x="136" y="318" width="122" height="112" fill="url(#panel3)"/>
+    <rect x="266" y="318" width="122" height="112" fill="url(#panel1)"/>
+    <rect x="396" y="318" width="122" height="112" fill="url(#panel2)"/>
+    <rect x="526" y="318" width="138" height="112" fill="url(#panel3)"/>
+  </g>
+
+  <!-- diagonal light reflection -->
+  <path d="M136 430 L310 118 H390 L216 430Z" fill="url(#glow)" opacity="0.55"/>
+  <path d="M526 430 L664 194 H690 L552 430Z" fill="#FFFFFF" opacity="0.16"/>
+
+  <!-- entrance -->
+  <rect x="330" y="336" width="92" height="94" rx="3" fill="#102D4F" opacity="0.88"/>
+  <rect x="340" y="346" width="72" height="72" rx="2" fill="#48B8D8" opacity="0.65"/>
+  <rect x="348" y="354" width="26" height="56" fill="#FFFFFF" opacity="0.2"/>
+  <rect x="374" y="336" width="4" height="94" fill="#F4F7FA" opacity="0.5"/>
+
+  <!-- ground -->
+  <rect x="92" y="448" width="616" height="18" rx="5" fill="#F4F7FA"/>
+  <rect x="128" y="474" width="544" height="6" rx="3" fill="#48B8D8" opacity="0.7"/>
+</svg>

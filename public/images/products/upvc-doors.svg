@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">UPVC doors and windows</title>
+  <desc id="desc">Illustration of modern UPVC double doors with glass panels.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102D4F"/>
+      <stop offset="1" stop-color="#1170B5"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E2E8F0"/>
+      <stop offset="0.45" stop-color="#48B8D8"/>
+      <stop offset="1" stop-color="#1685D4"/>
+    </linearGradient>
+    <linearGradient id="door" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.5" stop-color="#F4F7FA"/>
+      <stop offset="1" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#48B8D8" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#102D4F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="520" fill="url(#bg)"/>
+  <circle cx="690" cy="86" r="190" fill="#48B8D8" opacity="0.14"/>
+  <circle cx="108" cy="426" r="170" fill="#FFFFFF" opacity="0.05"/>
+  <rect x="0" y="420" width="800" height="100" fill="url(#floor)"/>
+  <ellipse cx="400" cy="438" rx="260" ry="22" fill="#102D4F" opacity="0.45"/>
+
+  <!-- wall opening -->
+  <rect x="200" y="44" width="400" height="396" rx="10" fill="#102D4F" opacity="0.35"/>
+  <rect x="212" y="54" width="376" height="386" rx="7" fill="#E2E8F0"/>
+
+  <!-- left door -->
+  <rect x="228" y="70" width="168" height="358" rx="4" fill="url(#door)"/>
+  <rect x="242" y="88" width="140" height="152" rx="2" fill="#102D4F" opacity="0.12"/>
+  <rect x="248" y="94" width="128" height="140" rx="1" fill="url(#glass)"/>
+  <path d="M260 220 L338 96 H360 L282 220Z" fill="#FFFFFF" opacity="0.34"/>
+  <rect x="242" y="258" width="140" height="142" rx="3" fill="#F4F7FA" stroke="#E2E8F0" stroke-width="3"/>
+  <rect x="258" y="276" width="108" height="106" rx="2" fill="#E2E8F0" opacity="0.62"/>
+  <rect x="364" y="214" width="10" height="66" rx="5" fill="#1170B5"/>
+
+  <!-- right door -->
+  <rect x="404" y="70" width="168" height="358" rx="4" fill="url(#door)"/>
+  <rect x="418" y="88" width="140" height="152" rx="2" fill="#102D4F" opacity="0.12"/>
+  <rect x="424" y="94" width="128" height="140" rx="1" fill="url(#glass)"/>
+  <path d="M436 220 L514 96 H536 L458 220Z" fill="#FFFFFF" opacity="0.3"/>
+  <rect x="418" y="258" width="140" height="142" rx="3" fill="#F4F7FA" stroke="#E2E8F0" stroke-width="3"/>
+  <rect x="434" y="276" width="108" height="106" rx="2" fill="#E2E8F0" opacity="0.62"/>
+  <rect x="426" y="214" width="10" height="66" rx="5" fill="#1170B5"/>
+
+  <!-- centre seam and handles -->
+  <rect x="396" y="70" width="8" height="358" fill="#102D4F" opacity="0.32"/>
+  <rect x="382" y="226" width="8" height="34" rx="4" fill="#102D4F" opacity="0.75"/>
+  <rect x="410" y="226" width="8" height="34" rx="4" fill="#102D4F" opacity="0.75"/>
+
+  <!-- side lights -->
+  <rect x="164" y="112" width="34" height="304" rx="3" fill="#F4F7FA"/>
+  <rect x="174" y="126" width="14" height="276" fill="#1685D4" opacity="0.7"/>
+  <rect x="602" y="112" width="34" height="304" rx="3" fill="#F4F7FA"/>
+  <rect x="612" y="126" width="14" height="276" fill="#1685D4" opacity="0.7"/>
+
+  <!-- threshold -->
+  <rect x="206" y="428" width="388" height="14" rx="4" fill="#F4F7FA"/>
+  <rect x="254" y="454" width="292" height="5" rx="2.5" fill="#48B8D8" opacity="0.75"/>
+</svg>

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Elegant Glass Partition",
+    "category": "Glass",
+    "image": "https://images.unsplash.com/photo-1560449029-e1408978d735?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 2,
+    "title": "Modern Aluminium Windows",
+    "category": "Aluminium",
+    "image": "https://images.unsplash.com/photo-1582517277278-a24e8e74cb6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 3,
+    "title": "Structural Steel Gate",
+    "category": "Steel",
+    "image": "https://images.unsplash.com/photo-1532987622753-3c1b9f9d6d09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 4,
+    "title": "UPVC Windows & Doors",
+    "category": "UPVC",
+    "image": "https://images.unsplash.com/photo-1600596542815-0ad49f3377ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 5,
+    "title": "Building Facade Cladding",
+    "category": "ACP",
+    "image": "https://images.unsplash.com/photo-1541888946425-d81bb19648f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": 6,
+    "title": "Storefront Glazing",
+    "category": "Glass",
+    "image": "https://images.unsplash.com/photo-1560449029-e1408978d735?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  }
+]

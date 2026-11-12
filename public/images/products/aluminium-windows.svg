@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">Modern aluminium sliding windows</title>
+  <desc id="desc">Illustration of premium aluminium sliding windows with blue glass panes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102D4F"/>
+      <stop offset="0.55" stop-color="#1170B5"/>
+      <stop offset="1" stop-color="#1685D4"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#48B8D8"/>
+      <stop offset="0.5" stop-color="#E2E8F0"/>
+      <stop offset="1" stop-color="#1685D4"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="520" fill="url(#bg)"/>
+  <circle cx="682" cy="86" r="190" fill="#48B8D8" opacity="0.14"/>
+  <circle cx="94" cy="452" r="170" fill="#FFFFFF" opacity="0.05"/>
+  <path d="M0 410 C180 360 310 470 470 410 S700 360 800 400 V520 H0Z" fill="#F4F7FA" opacity="0.08"/>
+
+  <!-- outer frame shadow -->
+  <rect x="116" y="64" width="568" height="392" rx="14" fill="#102D4F" opacity="0.45"/>
+  <rect x="108" y="54" width="568" height="392" rx="12" fill="url(#frame)"/>
+
+  <!-- window frame -->
+  <rect x="132" y="78" width="520" height="344" rx="4" fill="#102D4F" opacity="0.18"/>
+  <rect x="128" y="74" width="516" height="340" rx="3" fill="#E2E8F0"/>
+  <rect x="140" y="86" width="492" height="316" rx="2" fill="#102D4F"/>
+
+  <!-- glass panes -->
+  <rect x="152" y="98" width="228" height="292" fill="url(#glass)"/>
+  <rect x="392" y="98" width="228" height="292" fill="url(#glass)"/>
+
+  <!-- reflections -->
+  <path d="M170 390 L300 98 H344 L214 390Z" fill="url(#shine)" opacity="0.48"/>
+  <path d="M410 390 L540 98 H584 L454 390Z" fill="url(#shine)" opacity="0.42"/>
+  <path d="M216 390 L346 98 H364 L234 390Z" fill="#FFFFFF" opacity="0.18"/>
+  <path d="M456 390 L586 98 H604 L474 390Z" fill="#FFFFFF" opacity="0.16"/>
+
+  <!-- central mullion and handles -->
+  <rect x="376" y="86" width="16" height="316" fill="#F4F7FA"/>
+  <rect x="380" y="98" width="8" height="292" fill="#102D4F" opacity="0.16"/>
+  <rect x="348" y="228" width="10" height="58" rx="5" fill="#102D4F" opacity="0.8"/>
+  <rect x="410" y="228" width="10" height="58" rx="5" fill="#102D4F" opacity="0.8"/>
+
+  <!-- sill -->
+  <rect x="104" y="424" width="576" height="18" rx="5" fill="#F4F7FA"/>
+  <rect x="124" y="442" width="536" height="10" rx="5" fill="#102D4F" opacity="0.35"/>
+  <rect x="152" y="462" width="488" height="6" rx="3" fill="#48B8D8" opacity="0.55"/>
+</svg>
