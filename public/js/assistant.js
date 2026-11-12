@@ -31,7 +31,8 @@
     tourSectionId: null,
     assistantLang: "hi-IN",
     recognition: null,
-    listening: false
+    listening: false,
+    isTyping: false
   };
 
   const launcher = document.createElement("button");
@@ -119,6 +120,19 @@
 
   function renderMessages() {
     messagesEl.innerHTML = "";
+
+    if (state.isTyping) {
+      const typingRow = document.createElement("div");
+      typingRow.className = "assistant-message-row assistant-message-assistant";
+      const typingBubble = document.createElement("div");
+      typingBubble.className = "assistant-bubble assistant-typing";
+      typingBubble.textContent = "typing...";
+      typingRow.appendChild(typingBubble);
+      messagesEl.appendChild(typingRow);
+      scrollToBottom();
+      return;
+    }
+
     state.messages.forEach((msg) => {
       const row = document.createElement("div");
       row.className = "assistant-message-row";
@@ -234,9 +248,22 @@
     }
 
     if (has("product", "glass", "aluminium", "aluminum", "steel", "upvc", "acp", "kaanch", "shisha", "facade", "cladding", "kitchen", "partition", "window", "door", "railing", "gate", "modular", "paneel")) {
-      const product = K.products.find((p) => text.includes(p.title.toLowerCase()) || text.includes((p.category || "").toLowerCase()));
-      const lines = [product ? product.desc : "Hum categories me kaam karte hain."];
-      (product?.bullets || []).forEach((b) => lines.push(b));
+      const product = K.products.find((p) => text.includes(p.title.toLowerCase()) || text.includes((p.category || "").toLowerCase()))
+        || (has("kaanch", "shisha", "glass") ? K.products.find((p) => p.category === "Glass") : null)
+        || (has("aluminium", "aluminum") ? K.products.find((p) => p.category === "Aluminium") : null)
+        || (has("steel") ? K.products.find((p) => p.category === "Steel") : null)
+        || (has("upvc") ? K.products.find((p) => p.category === "UPVC") : null)
+        || (has("acp") ? K.products.find((p) => p.category === "ACP") : null);
+      const lines = [];
+      if (product) {
+        lines.push(product.desc);
+        (product.bullets || []).forEach((b) => lines.push(b));
+      } else {
+        (K.products || []).forEach((p) => {
+          lines.push(`${p.title}: ${p.desc}`);
+          (p.bullets || []).forEach((b) => lines.push(b));
+        });
+      }
       return { text: lines.join(" "), quickReplies: [{ label: "Products page kholo", action: "navigate:products" }] };
     }
 
@@ -283,13 +310,21 @@
       return { text: faq ? faq.a : "FAQ ka jawab humare paas hai, kripya contact page check karein." };
     }
 
+    if (has("rating", "rt", "star", "justdial", "feedback")) {
+      const rating = K.business?.rating;
+      return {
+        text: `Hum Justdial par ${rating?.value ?? 5}/5 rating hain.`,
+        quickReplies: [{ label: "Contact", action: "contact" }]
+      };
+    }
+
     return {
       text: "Iski jankari mere paas nahi hai, kripya call karein: 8607774600",
       quickReplies: [{ label: "Call", action: "call" }, { label: "WhatsApp", action: "whatsapp" }]
     };
   }
 
-  function send(raw) {
+  async function send(raw) {
     const value = (raw || "").trim();
     if (!value) return;
     addUserMessage(value);
@@ -298,8 +333,32 @@
       startTour();
       return;
     }
-    const reply = getAssistantReply(value);
-    addAssistantMessage(reply.text, { quickReplies: reply.quickReplies || [] });
+
+    state.isTyping = true;
+    renderMessages();
+
+    try {
+      const history = state.messages.slice(-6).map((m) => ({
+        role: m.source === "assistant" ? "assistant" : "user",
+        content: m.text
+      }));
+
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: value, history })
+      });
+
+      const data = await response.json().catch(() => null);
+      const reply = (data && typeof data.reply === "string" && data.reply.trim()) || getAssistantReply(value).text;
+      addAssistantMessage(reply, { quickReplies: Array.isArray(data?.quickReplies) ? data.quickReplies : [] });
+    } catch (error) {
+      const fallback = getAssistantReply(value);
+      addAssistantMessage(fallback.text, { quickReplies: fallback.quickReplies || [] });
+    } finally {
+      state.isTyping = false;
+      renderMessages();
+    }
   }
 
   function speak(text, lang) {

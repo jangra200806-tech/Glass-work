@@ -160,6 +160,12 @@
   border-left: 4px solid var(--sky);
 }
 
+.assistant-typing .assistant-bubble {
+  background: var(--grey-bg);
+  color: var(--navy);
+  border-left: 4px solid var(--light-blue);
+}
+
 .assistant-speaker {
   margin-top: 6px;
   width: 28px;
