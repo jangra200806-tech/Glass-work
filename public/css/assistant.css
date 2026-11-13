@@ -1,48 +1,202 @@
 /* ================= AI ASSISTANT (MAA MANSA DEVI GLASS WORKS) ================= */
 
+/* ---------- Floating robot launcher ---------- */
 .assistant-launcher {
   position: fixed;
   left: 1.25rem;
   bottom: 1.25rem;
-  width: 56px;
-  height: 56px;
+  width: 86px;
+  height: 86px;
+  padding: 3px;
   border-radius: 50%;
-  border: none;
-  background-color: var(--sky);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: radial-gradient(circle at 30% 25%, #48B8D8 0%, #1685D4 50%, #102D4F 100%);
   color: var(--white);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 14px 34px rgba(16, 45, 79, 0.24), 0 0 0 7px rgba(72, 184, 216, 0.1);
   z-index: 1200;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s ease, background-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.assistant-launcher::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  pointer-events: none;
 }
 
 .assistant-launcher:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 18px 40px rgba(16, 45, 79, 0.28), 0 0 0 8px rgba(72, 184, 216, 0.14);
+}
+
+.assistant-launcher:active {
+  transform: scale(0.96);
 }
 
 .assistant-launcher:focus-visible {
-  outline: 3px solid var(--sky-dark);
-  outline-offset: 2px;
+  outline: 3px solid var(--light-blue);
+  outline-offset: 4px;
 }
 
-.assistant-icon {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-
-.assistant-icon-fallback {
-  width: 30px;
-  height: 30px;
+.assistant-robot-shell {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  animation: assistantFloat 3.6s ease-in-out infinite;
+  will-change: transform;
 }
 
+.assistant-launcher:hover .assistant-robot-shell {
+  animation: assistantRobotHover 0.55s ease-in-out;
+}
+
+.assistant-robot-picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.assistant-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 10px rgba(16, 45, 79, 0.22));
+}
+
+.assistant-icon-fallback,
+.assistant-robot-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  font-size: 1.2em;
+}
+
+.assistant-launcher .assistant-robot-fallback {
+  font-size: 38px;
+}
+
+/* Speaking waves above the robot */
+.assistant-speaking-waves {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 17px;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.assistant-launcher-speaking .assistant-speaking-waves {
+  opacity: 1;
+}
+
+.assistant-speaking-waves i {
+  display: block;
+  width: 3px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--white);
+  box-shadow: 0 0 8px rgba(72, 184, 216, 0.9);
+  animation: assistantWave 0.9s ease-in-out infinite;
+}
+
+.assistant-speaking-waves i:nth-child(2) {
+  height: 14px;
+  background: var(--light-blue);
+  animation-delay: 0.12s;
+}
+
+.assistant-speaking-waves i:nth-child(3) {
+  height: 10px;
+  animation-delay: 0.24s;
+}
+
+/* Thinking glow */
+.assistant-launcher-thinking {
+  animation: assistantThinkingGlow 1.25s ease-in-out infinite;
+}
+
+/* ---------- One-time hello bubble ---------- */
+.assistant-greeting {
+  position: fixed;
+  left: 1.25rem;
+  bottom: calc(1.25rem + 100px);
+  z-index: 1201;
+  max-width: 230px;
+  padding: 11px 34px 11px 13px;
+  background: var(--white);
+  color: var(--navy);
+  border: 1.5px solid var(--light-blue);
+  border-radius: 16px 16px 16px 6px;
+  box-shadow: 0 14px 32px rgba(16, 45, 79, 0.18);
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transform-origin: bottom left;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.assistant-greeting-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.assistant-greeting::after {
+  content: "";
+  position: absolute;
+  left: 26px;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
+  background: var(--white);
+  border-left: 1.5px solid var(--light-blue);
+  border-bottom: 1.5px solid var(--light-blue);
+  transform: rotate(-45deg);
+  border-bottom-left-radius: 3px;
+}
+
+.assistant-greeting-close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.assistant-greeting-close:hover {
+  background: var(--grey-bg);
+}
+
+/* ---------- Chat panel ---------- */
 .assistant-panel {
   position: fixed;
   left: 1rem;
@@ -87,16 +241,61 @@
   gap: 8px;
 }
 
+.assistant-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  flex: 1;
+}
+
 .assistant-title {
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: 14px;
   font-weight: 600;
   color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.assistant-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #FFFFFF 0%, #F4F7FA 52%, #48B8D8 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  overflow: hidden;
+}
+
+.assistant-avatar-header {
+  width: 34px;
+  height: 34px;
+}
+
+.assistant-avatar-img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.assistant-panel-thinking .assistant-avatar-header {
+  animation: assistantAvatarThinking 1.25s ease-in-out infinite;
+}
+
+.assistant-panel-speaking .assistant-avatar-header {
+  box-shadow: 0 0 0 3px rgba(72, 184, 216, 0.35), 0 0 16px rgba(72, 184, 216, 0.75);
+  animation: assistantAvatarSpeaking 0.9s ease-in-out infinite;
 }
 
 .assistant-header-actions {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .assistant-lang {
@@ -125,6 +324,7 @@
 .assistant-messages {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 14px;
   display: flex;
   flex-direction: column;
@@ -134,6 +334,8 @@
 
 .assistant-message-row {
   display: flex;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .assistant-message-user {
@@ -142,16 +344,54 @@
 
 .assistant-message-assistant {
   justify-content: flex-start;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.assistant-message {
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100% - 40px);
+}
+
+.assistant-message-user .assistant-message {
+  align-items: flex-end;
+  max-width: 85%;
+}
+
+.assistant-message-assistant .assistant-message {
+  align-items: flex-start;
+}
+
+.assistant-message-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 2px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--light-blue);
+  overflow: hidden;
+}
+
+.assistant-message-avatar .assistant-avatar-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
 }
 
 .assistant-bubble {
-  max-width: 85%;
+  max-width: 100%;
   padding: 10px 12px;
   border-radius: 14px;
   background: var(--sky);
   color: var(--white);
   font-size: 14px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .assistant-message-assistant .assistant-bubble {
@@ -160,7 +400,8 @@
   border-left: 4px solid var(--sky);
 }
 
-.assistant-typing .assistant-bubble {
+.assistant-typing .assistant-bubble,
+.assistant-bubble.assistant-typing {
   background: var(--grey-bg);
   color: var(--navy);
   border-left: 4px solid var(--light-blue);
@@ -181,7 +422,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   padding: 0 14px 10px;
+  box-sizing: border-box;
 }
 
 .assistant-quick-btn {
@@ -253,6 +498,44 @@
   cursor: pointer;
 }
 
+/* ---------- Robot motion ---------- */
+@keyframes assistantFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes assistantRobotHover {
+  0% { transform: translateY(0) rotate(0) scale(1); }
+  30% { transform: translateY(-5px) rotate(-3deg) scale(1.06); }
+  65% { transform: translateY(-2px) rotate(2deg) scale(1.05); }
+  100% { transform: translateY(0) rotate(0) scale(1.03); }
+}
+
+@keyframes assistantThinkingGlow {
+  0%, 100% {
+    box-shadow: 0 14px 34px rgba(16, 45, 79, 0.24), 0 0 0 7px rgba(72, 184, 216, 0.1);
+  }
+  50% {
+    box-shadow: 0 16px 38px rgba(16, 45, 79, 0.3), 0 0 0 12px rgba(72, 184, 216, 0.22);
+  }
+}
+
+@keyframes assistantWave {
+  0%, 100% { transform: scaleY(0.6); opacity: 0.65; }
+  50% { transform: scaleY(1.2); opacity: 1; }
+}
+
+@keyframes assistantAvatarThinking {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(72, 184, 216, 0); }
+  50% { box-shadow: 0 0 0 3px rgba(72, 184, 216, 0.3), 0 0 14px rgba(72, 184, 216, 0.55); }
+}
+
+@keyframes assistantAvatarSpeaking {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(72, 184, 216, 0.25), 0 0 10px rgba(72, 184, 216, 0.5); }
+  50% { box-shadow: 0 0 0 4px rgba(72, 184, 216, 0.4), 0 0 18px rgba(72, 184, 216, 0.85); }
+}
+
+/* ---------- Mobile ---------- */
 @media (max-width: 768px) {
   .assistant-panel {
     left: 0;
@@ -265,7 +548,61 @@
   }
 
   .assistant-launcher {
-    left: 1rem;
-    bottom: 1rem;
+    left: 0.9rem;
+    bottom: 0.9rem;
+    width: 64px;
+    height: 64px;
+    padding: 3px;
+  }
+
+  .assistant-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .assistant-launcher .assistant-robot-fallback {
+    font-size: 30px;
+  }
+
+  .assistant-greeting {
+    left: 0.9rem;
+    bottom: calc(0.9rem + 76px);
+    max-width: 200px;
+    padding: 9px 30px 9px 11px;
+    font-size: 12px;
+  }
+
+  .assistant-avatar-header {
+    width: 30px;
+    height: 30px;
+  }
+
+  .assistant-avatar-header .assistant-avatar-img {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* ---------- Accessibility: no motion when requested ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .assistant-launcher,
+  .assistant-launcher *,
+  .assistant-panel,
+  .assistant-greeting,
+  .assistant-message-avatar,
+  .assistant-avatar,
+  .assistant-icon,
+  .assistant-speaking-waves i,
+  .assistant-tour-highlight {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .assistant-robot-shell {
+    animation: none !important;
+  }
+
+  .assistant-speaking-waves {
+    display: none !important;
   }
 }

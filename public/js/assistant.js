@@ -35,22 +35,123 @@
     isTyping: false
   };
 
+  const ROBOT_IMAGE_SRC = "images/assistant-robot.svg";
+  const ROBOT_IMAGE_FALLBACK_SRC = "images/assistant-robot.png";
+  const GREETING_STORAGE_KEY = "mmdgAssistantGreetingShown";
+  let greetingEl = null;
+  let greetingTimer = null;
+  let greetingShownInMemory = false;
+  let greetingDismissed = false;
+
+  function createRobotImage(className, alt, eager) {
+    const picture = document.createElement("picture");
+    picture.className = "assistant-robot-picture";
+
+    const source = document.createElement("source");
+    source.srcset = ROBOT_IMAGE_SRC;
+    source.type = "image/svg+xml";
+    picture.appendChild(source);
+
+    const img = document.createElement("img");
+    img.className = className;
+    img.src = ROBOT_IMAGE_FALLBACK_SRC;
+    img.alt = alt || "";
+    img.decoding = "async";
+    img.loading = eager ? "eager" : "lazy";
+    img.draggable = false;
+    img.addEventListener("error", () => {
+      const fallback = document.createElement("span");
+      fallback.className = "assistant-robot-fallback";
+      fallback.textContent = "🤖";
+      fallback.setAttribute("aria-hidden", "true");
+      picture.replaceWith(fallback);
+    });
+    picture.appendChild(img);
+    return picture;
+  }
+
+  function createMessageAvatar() {
+    const avatar = document.createElement("span");
+    avatar.className = "assistant-message-avatar";
+    avatar.setAttribute("aria-hidden", "true");
+    avatar.appendChild(createRobotImage("assistant-avatar-img", "", false));
+    return avatar;
+  }
+
+  function hasGreetingBeenShown() {
+    if (greetingShownInMemory) return true;
+    try {
+      return window.localStorage.getItem(GREETING_STORAGE_KEY) === "1";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function rememberGreetingShown() {
+    greetingShownInMemory = true;
+    try {
+      window.localStorage.setItem(GREETING_STORAGE_KEY, "1");
+    } catch (error) {
+      /* localStorage is optional */
+    }
+  }
+
+  function hideGreeting() {
+    greetingDismissed = true;
+    if (greetingTimer) {
+      window.clearTimeout(greetingTimer);
+      greetingTimer = null;
+    }
+    if (!greetingEl) return;
+    greetingEl.classList.remove("assistant-greeting-visible");
+    greetingEl.setAttribute("aria-hidden", "true");
+  }
+
+  function showGreeting() {
+    if (hasGreetingBeenShown() || greetingEl || greetingDismissed) return;
+    rememberGreetingShown();
+
+    greetingEl = document.createElement("div");
+    greetingEl.className = "assistant-greeting";
+    greetingEl.setAttribute("role", "status");
+    greetingEl.setAttribute("aria-live", "polite");
+    greetingEl.innerHTML = `
+      <span>Namaste! Kuch poochna hai?</span>
+      <button class="assistant-greeting-close" type="button" aria-label="Close message">×</button>
+    `;
+    document.body.appendChild(greetingEl);
+
+    greetingEl.querySelector(".assistant-greeting-close").addEventListener("click", (event) => {
+      event.stopPropagation();
+      hideGreeting();
+    });
+
+    window.requestAnimationFrame(() => {
+      if (!greetingEl || greetingDismissed) return;
+      greetingEl.setAttribute("aria-hidden", "false");
+      greetingEl.classList.add("assistant-greeting-visible");
+    });
+
+    greetingTimer = window.setTimeout(hideGreeting, 5000);
+  }
+
   const launcher = document.createElement("button");
   launcher.id = "assistant-launcher";
   launcher.className = "assistant-launcher";
   launcher.type = "button";
   launcher.setAttribute("aria-label", "Open AI Assistant");
-  const icon = document.createElement("img");
-  icon.className = "assistant-icon";
-  icon.src = "images/3d-robot-companion-icon-friendly-ai-assistant-illustration-logo_762678-88321.avif";
-  icon.alt = "AI Assistant";
-  icon.addEventListener("error", () => {
-    const fallback = document.createElement("div");
-    fallback.className = "assistant-icon-fallback";
-    fallback.textContent = "🤖";
-    icon.replaceWith(fallback);
-  });
-  launcher.appendChild(icon);
+  launcher.setAttribute("aria-expanded", "false");
+
+  const robotShell = document.createElement("span");
+  robotShell.className = "assistant-robot-shell";
+  robotShell.appendChild(createRobotImage("assistant-icon", "AI Assistant robot", true));
+  launcher.appendChild(robotShell);
+
+  const speakingWaves = document.createElement("span");
+  speakingWaves.className = "assistant-speaking-waves";
+  speakingWaves.setAttribute("aria-hidden", "true");
+  speakingWaves.innerHTML = "<i></i><i></i><i></i>";
+  launcher.appendChild(speakingWaves);
 
   const panel = document.createElement("div");
   panel.id = "assistant-panel";
@@ -58,7 +159,10 @@
   panel.setAttribute("aria-hidden", "true");
   panel.innerHTML = `
     <div class="assistant-header">
-      <span class="assistant-title">MAA MANSA DEVI GLASS WORKS Assistant</span>
+      <div class="assistant-brand">
+        <span class="assistant-avatar assistant-avatar-header" id="assistant-header-avatar" aria-hidden="true"></span>
+        <span class="assistant-title">MAA MANSA DEVI GLASS WORKS Assistant</span>
+      </div>
       <div class="assistant-header-actions">
         <button class="assistant-lang" type="button" aria-label="Change language">${state.assistantLang === "hi-IN" ? "HI" : "EN"}</button>
         <button class="assistant-close" id="assistant-close" type="button" aria-label="Close assistant">×</button>
@@ -81,6 +185,9 @@
 
   document.body.appendChild(launcher);
   document.body.appendChild(panel);
+
+  const headerAvatar = panel.querySelector("#assistant-header-avatar");
+  if (headerAvatar) headerAvatar.appendChild(createRobotImage("assistant-avatar-img", "", false));
 
   const closeBtn = panel.querySelector("#assistant-close");
   const langBtn = panel.querySelector(".assistant-lang");
@@ -124,6 +231,7 @@
     if (state.isTyping) {
       const typingRow = document.createElement("div");
       typingRow.className = "assistant-message-row assistant-message-assistant";
+      typingRow.appendChild(createMessageAvatar());
       const typingBubble = document.createElement("div");
       typingBubble.className = "assistant-bubble assistant-typing";
       typingBubble.textContent = "typing...";
@@ -146,6 +254,9 @@
       rowEl.className = "assistant-message";
       rowEl.appendChild(bubble);
 
+      if (msg.source === "assistant") {
+        row.appendChild(createMessageAvatar());
+      }
       row.appendChild(rowEl);
       messagesEl.appendChild(row);
 
@@ -335,6 +446,8 @@
     }
 
     state.isTyping = true;
+    launcher.classList.add("assistant-launcher-thinking");
+    panel.classList.add("assistant-panel-thinking");
     renderMessages();
 
     try {
@@ -357,6 +470,8 @@
       addAssistantMessage(fallback.text, { quickReplies: fallback.quickReplies || [] });
     } finally {
       state.isTyping = false;
+      launcher.classList.remove("assistant-launcher-thinking");
+      panel.classList.remove("assistant-panel-thinking");
       renderMessages();
     }
   }
@@ -375,8 +490,16 @@
       voices.find((v) => (v.lang || "").toLowerCase().startsWith("en"));
     if (voice) utterance.voice = voice;
     state.tourUtterance = utterance;
+    launcher.classList.add("assistant-launcher-speaking");
+    panel.classList.add("assistant-panel-speaking");
     utterance.onend = () => {
+      launcher.classList.remove("assistant-launcher-speaking");
+      panel.classList.remove("assistant-panel-speaking");
       if (state.tourState === "speaking") nextTourStep();
+    };
+    utterance.onerror = () => {
+      launcher.classList.remove("assistant-launcher-speaking");
+      panel.classList.remove("assistant-panel-speaking");
     };
     window.speechSynthesis.speak(utterance);
   }
@@ -384,6 +507,8 @@
   function stopSpeaking() {
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
     state.tourUtterance = null;
+    launcher.classList.remove("assistant-launcher-speaking");
+    panel.classList.remove("assistant-panel-speaking");
   }
 
   function speakText(text, lang) {
@@ -544,7 +669,9 @@
       state.open = !state.open;
       panel.setAttribute("aria-hidden", String(!state.open));
       panel.classList.toggle("assistant-panel-open", state.open);
+      launcher.setAttribute("aria-expanded", String(state.open));
       if (state.open) {
+        hideGreeting();
         if (!state.welcomeAdded) {
           state.welcomeAdded = true;
           addAssistantMessage("Namaste! Main MAA MANSA DEVI GLASS WORKS Assistant hoon. Aap mujhse products, services, timings, address, projects ya voice tour pooch sakte hain.", { quickReplies: [
@@ -565,6 +692,8 @@
       state.open = false;
       panel.setAttribute("aria-hidden", "true");
       panel.classList.remove("assistant-panel-open");
+      launcher.setAttribute("aria-expanded", "false");
+      hideGreeting();
       stopTour();
     });
 
@@ -583,9 +712,15 @@
       if (action === "pause") {
         if (state.tourState === "speaking" && state.tourUtterance) window.speechSynthesis.pause();
         state.tourState = "paused";
+        launcher.classList.remove("assistant-launcher-speaking");
+        panel.classList.remove("assistant-panel-speaking");
       } else if (action === "resume") {
         if (state.tourState === "paused" && state.tourUtterance) window.speechSynthesis.resume();
         state.tourState = "speaking";
+        if (state.tourUtterance) {
+          launcher.classList.add("assistant-launcher-speaking");
+          panel.classList.add("assistant-panel-speaking");
+        }
       } else if (action === "next") {
         stopSpeaking();
         const next = state.currentTourStep + 1;
@@ -620,6 +755,10 @@
     state.messages = [];
     state.quickReplies = [];
     renderMessages();
+
+    window.setTimeout(() => {
+      if (!state.open) showGreeting();
+    }, 900);
   }
 
   if (document.readyState === "complete") initAssistant();

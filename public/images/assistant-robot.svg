@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Friendly AI assistant robot">
+  <defs>
+    <linearGradient id="robotHead" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F4F7FA"/>
+    </linearGradient>
+    <linearGradient id="robotBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#48B8D8"/>
+      <stop offset="0.55" stop-color="#1685D4"/>
+      <stop offset="1" stop-color="#102D4F"/>
+    </linearGradient>
+    <linearGradient id="robotFace" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#102D4F"/>
+      <stop offset="1" stop-color="#1685D4"/>
+    </linearGradient>
+    <radialGradient id="robotEye" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#48B8D8"/>
+      <stop offset="1" stop-color="#1685D4"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="60" cy="112" rx="28" ry="5" fill="#102D4F" opacity="0.14"/>
+
+  <!-- Antenna -->
+  <path d="M60 20V11" stroke="#102D4F" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="60" cy="8" r="5" fill="#48B8D8" stroke="#102D4F" stroke-width="2"/>
+  <circle cx="58.4" cy="6.4" r="1.5" fill="#FFFFFF"/>
+
+  <!-- Side ears -->
+  <rect x="16" y="40" width="10" height="22" rx="5" fill="#1685D4" stroke="#102D4F" stroke-width="2.5"/>
+  <rect x="94" y="40" width="10" height="22" rx="5" fill="#1685D4" stroke="#102D4F" stroke-width="2.5"/>
+  <rect x="18.5" y="43" width="3" height="16" rx="1.5" fill="#48B8D8"/>
+  <rect x="96.5" y="43" width="3" height="16" rx="1.5" fill="#48B8D8"/>
+
+  <!-- Head -->
+  <rect x="24" y="19" width="72" height="55" rx="23" fill="url(#robotHead)" stroke="#102D4F" stroke-width="3"/>
+  <path d="M36 27c7-4.5 16-6 27-5.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.95"/>
+
+  <!-- Face screen -->
+  <rect x="34" y="31" width="52" height="31" rx="15" fill="url(#robotFace)" stroke="#102D4F" stroke-width="2.5"/>
+  <rect x="37" y="34" width="46" height="25" rx="12" fill="none" stroke="#48B8D8" stroke-width="1.2" opacity="0.55"/>
+
+  <!-- Eyes -->
+  <ellipse cx="48.5" cy="45" rx="5.5" ry="6" fill="url(#robotEye)"/>
+  <ellipse cx="71.5" cy="45" rx="5.5" ry="6" fill="url(#robotEye)"/>
+  <circle cx="47" cy="43" r="1.7" fill="#FFFFFF"/>
+  <circle cx="70" cy="43" r="1.7" fill="#FFFFFF"/>
+
+  <!-- Smile -->
+  <path d="M52 54c2.5 3 5.3 4.5 8 4.5s5.5-1.5 8-4.5" fill="none" stroke="#48B8D8" stroke-width="2.6" stroke-linecap="round"/>
+
+  <!-- Neck -->
+  <rect x="52" y="72" width="16" height="9" rx="4.5" fill="#1685D4" stroke="#102D4F" stroke-width="2"/>
+
+  <!-- Arms -->
+  <rect x="18" y="79" width="12" height="25" rx="6" fill="url(#robotBody)" stroke="#102D4F" stroke-width="2.5" transform="rotate(10 24 91)"/>
+  <rect x="90" y="79" width="12" height="25" rx="6" fill="url(#robotBody)" stroke="#102D4F" stroke-width="2.5" transform="rotate(-10 96 91)"/>
+  <circle cx="22" cy="104" r="6" fill="#F4F7FA" stroke="#102D4F" stroke-width="2.5"/>
+  <circle cx="98" cy="104" r="6" fill="#F4F7FA" stroke="#102D4F" stroke-width="2.5"/>
+
+  <!-- Body -->
+  <rect x="33" y="78" width="54" height="30" rx="14" fill="url(#robotBody)" stroke="#102D4F" stroke-width="2.8"/>
+  <path d="M43 84c5-3 11-4 18-4" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Chest badge -->
+  <circle cx="60" cy="92" r="8" fill="#F4F7FA" stroke="#102D4F" stroke-width="2"/>
+  <path d="M62.5 86.5 55.5 93h4.5l-2 5.5 7.5-7.5h-5z" fill="#1685D4"/>
+</svg>
