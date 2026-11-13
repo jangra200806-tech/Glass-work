@@ -1,5 +1,11 @@
 /* ================= AI ASSISTANT (MAA MANSA DEVI GLASS WORKS) ================= */
 
+:root {
+  --assistant-gold: #E8B84A;
+  --assistant-gold-light: #FFE99A;
+  --assistant-black: #05070A;
+}
+
 /* ---------- Floating robot launcher ---------- */
 .assistant-launcher {
   position: fixed;
@@ -9,10 +15,10 @@
   height: 86px;
   padding: 3px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  background: radial-gradient(circle at 30% 25%, #48B8D8 0%, #1685D4 50%, #102D4F 100%);
+  border: 2px solid rgba(232, 184, 74, 0.9);
+  background: radial-gradient(circle at 30% 25%, #2A2A2A 0%, #0B0C0E 55%, var(--assistant-black) 100%);
   color: var(--white);
-  box-shadow: 0 14px 34px rgba(16, 45, 79, 0.24), 0 0 0 7px rgba(72, 184, 216, 0.1);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3), 0 0 0 7px rgba(232, 184, 74, 0.1);
   z-index: 1200;
   cursor: pointer;
   display: flex;
@@ -27,13 +33,13 @@
   position: absolute;
   inset: 4px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 233, 154, 0.35);
   pointer-events: none;
 }
 
 .assistant-launcher:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 18px 40px rgba(16, 45, 79, 0.28), 0 0 0 8px rgba(72, 184, 216, 0.14);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 0 8px rgba(232, 184, 74, 0.16);
 }
 
 .assistant-launcher:active {
@@ -41,7 +47,7 @@
 }
 
 .assistant-launcher:focus-visible {
-  outline: 3px solid var(--light-blue);
+  outline: 3px solid var(--assistant-gold);
   outline-offset: 4px;
 }
 
@@ -71,7 +77,7 @@
   width: 80px;
   height: 80px;
   object-fit: contain;
-  filter: drop-shadow(0 8px 10px rgba(16, 45, 79, 0.22));
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
 }
 
 .assistant-icon-fallback,
@@ -113,14 +119,14 @@
   width: 3px;
   height: 7px;
   border-radius: 2px;
-  background: var(--white);
-  box-shadow: 0 0 8px rgba(72, 184, 216, 0.9);
+  background: var(--assistant-gold-light);
+  box-shadow: 0 0 8px rgba(232, 184, 74, 0.9);
   animation: assistantWave 0.9s ease-in-out infinite;
 }
 
 .assistant-speaking-waves i:nth-child(2) {
   height: 14px;
-  background: var(--light-blue);
+  background: var(--assistant-gold);
   animation-delay: 0.12s;
 }
 
@@ -266,8 +272,8 @@
   justify-content: center;
   flex: 0 0 auto;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 25%, #FFFFFF 0%, #F4F7FA 52%, #48B8D8 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  background: radial-gradient(circle at 30% 25%, #2A2A2A 0%, #0B0C0E 60%, var(--assistant-black) 100%);
+  border: 1.5px solid rgba(232, 184, 74, 0.75);
   overflow: hidden;
 }
 
@@ -287,7 +293,7 @@
 }
 
 .assistant-panel-speaking .assistant-avatar-header {
-  box-shadow: 0 0 0 3px rgba(72, 184, 216, 0.35), 0 0 16px rgba(72, 184, 216, 0.75);
+  box-shadow: 0 0 0 3px rgba(232, 184, 74, 0.35), 0 0 16px rgba(232, 184, 74, 0.75);
   animation: assistantAvatarSpeaking 0.9s ease-in-out infinite;
 }
 
@@ -372,8 +378,8 @@
   height: 30px;
   margin-bottom: 2px;
   border-radius: 50%;
-  background: var(--white);
-  border: 1px solid var(--light-blue);
+  background: radial-gradient(circle at 30% 25%, #2A2A2A 0%, #0B0C0E 60%, var(--assistant-black) 100%);
+  border: 1px solid rgba(232, 184, 74, 0.7);
   overflow: hidden;
 }
 
@@ -513,10 +519,10 @@
 
 @keyframes assistantThinkingGlow {
   0%, 100% {
-    box-shadow: 0 14px 34px rgba(16, 45, 79, 0.24), 0 0 0 7px rgba(72, 184, 216, 0.1);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3), 0 0 0 7px rgba(232, 184, 74, 0.1);
   }
   50% {
-    box-shadow: 0 16px 38px rgba(16, 45, 79, 0.3), 0 0 0 12px rgba(72, 184, 216, 0.22);
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.36), 0 0 0 12px rgba(232, 184, 74, 0.22);
   }
 }
 
@@ -526,13 +532,13 @@
 }
 
 @keyframes assistantAvatarThinking {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(72, 184, 216, 0); }
-  50% { box-shadow: 0 0 0 3px rgba(72, 184, 216, 0.3), 0 0 14px rgba(72, 184, 216, 0.55); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 184, 74, 0); }
+  50% { box-shadow: 0 0 0 3px rgba(232, 184, 74, 0.3), 0 0 14px rgba(232, 184, 74, 0.55); }
 }
 
 @keyframes assistantAvatarSpeaking {
-  0%, 100% { box-shadow: 0 0 0 2px rgba(72, 184, 216, 0.25), 0 0 10px rgba(72, 184, 216, 0.5); }
-  50% { box-shadow: 0 0 0 4px rgba(72, 184, 216, 0.4), 0 0 18px rgba(72, 184, 216, 0.85); }
+  0%, 100% { box-shadow: 0 0 0 2px rgba(232, 184, 74, 0.25), 0 0 10px rgba(232, 184, 74, 0.5); }
+  50% { box-shadow: 0 0 0 4px rgba(232, 184, 74, 0.4), 0 0 18px rgba(232, 184, 74, 0.85); }
 }
 
 /* ---------- Mobile ---------- */

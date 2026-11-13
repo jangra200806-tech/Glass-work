@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" role="img" aria-label="Premium black and gold friendly AI assistant robot">
+  <defs>
+    <linearGradient id="rgBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#343B45"/>
+      <stop offset="0.16" stop-color="#171C23"/>
+      <stop offset="0.42" stop-color="#080A0E"/>
+      <stop offset="0.72" stop-color="#10151B"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="rgBodySheen" cx="0.28" cy="0.18" r="0.92">
+      <stop offset="0" stop-color="#7C8794" stop-opacity="0.52"/>
+      <stop offset="0.28" stop-color="#3A424C" stop-opacity="0.22"/>
+      <stop offset="0.62" stop-color="#11161C" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rgVisor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#020304"/>
+      <stop offset="0.42" stop-color="#0C1117"/>
+      <stop offset="0.76" stop-color="#070A0E"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <linearGradient id="rgGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF9D6"/>
+      <stop offset="0.13" stop-color="#F9DE83"/>
+      <stop offset="0.3" stop-color="#D9A62C"/>
+      <stop offset="0.5" stop-color="#FFF0A8"/>
+      <stop offset="0.68" stop-color="#C58A18"/>
+      <stop offset="0.86" stop-color="#8A570B"/>
+      <stop offset="1" stop-color="#F3CC5A"/>
+    </linearGradient>
+    <linearGradient id="rgGoldVertical" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF6C7"/>
+      <stop offset="0.3" stop-color="#E8B84A"/>
+      <stop offset="0.55" stop-color="#B77A12"/>
+      <stop offset="0.78" stop-color="#FFE99A"/>
+      <stop offset="1" stop-color="#9A620C"/>
+    </linearGradient>
+    <radialGradient id="rgEye" cx="0.36" cy="0.28" r="0.78">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.18" stop-color="#FFF9D5"/>
+      <stop offset="0.42" stop-color="#FFE68F"/>
+      <stop offset="0.7" stop-color="#F5C34A"/>
+      <stop offset="0.9" stop-color="#D99A1C"/>
+      <stop offset="1" stop-color="#A96808"/>
+    </radialGradient>
+    <radialGradient id="rgEarGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFFBE7" stop-opacity="1"/>
+      <stop offset="0.32" stop-color="#F8D46A" stop-opacity="0.95"/>
+      <stop offset="0.7" stop-color="#D99A1C" stop-opacity="0.48"/>
+      <stop offset="1" stop-color="#A96808" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rgGround" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.34"/>
+      <stop offset="0.55" stop-color="#000000" stop-opacity="0.2"/>
+      <stop offset="0.8" stop-color="#000000" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="120" cy="291" rx="70" ry="15" fill="url(#rgGround)"/>
+
+  <!-- Antenna -->
+  <path d="M120 34V16" stroke="url(#rgGoldVertical)" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="120" cy="12" r="13" fill="url(#rgEarGlow)" opacity="0.5"/>
+  <circle cx="120" cy="12" r="7" fill="url(#rgGold)"/>
+  <circle cx="117.8" cy="9.8" r="2.2" fill="#FFFBE7"/>
+
+  <!-- Side ear pieces (headphone style) -->
+  <g>
+    <rect x="11" y="66" width="31" height="53" rx="15.5" fill="url(#rgBody)" stroke="url(#rgGold)" stroke-width="3"/>
+    <rect x="18" y="75" width="17" height="35" rx="8.5" fill="url(#rgGoldVertical)" opacity="0.96"/>
+    <rect x="21.5" y="80" width="10" height="25" rx="5" fill="#05070A"/>
+    <circle cx="26.5" cy="92.5" r="4.2" fill="url(#rgEarGlow)"/>
+    <path d="M16 74c2-4 6-6 11-6" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+  <g>
+    <rect x="198" y="66" width="31" height="53" rx="15.5" fill="url(#rgBody)" stroke="url(#rgGold)" stroke-width="3"/>
+    <rect x="205" y="75" width="17" height="35" rx="8.5" fill="url(#rgGoldVertical)" opacity="0.96"/>
+    <rect x="208.5" y="80" width="10" height="25" rx="5" fill="#05070A"/>
+    <circle cx="213.5" cy="92.5" r="4.2" fill="url(#rgEarGlow)"/>
+    <path d="M208 68c5 0 9 2 11 6" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Helmet head -->
+  <g>
+    <rect x="36" y="31" width="168" height="117" rx="51" fill="url(#rgBody)" stroke="url(#rgGold)" stroke-width="3.6"/>
+    <rect x="36" y="31" width="168" height="117" rx="51" fill="url(#rgBodySheen)"/>
+    <rect x="41.5" y="36.5" width="157" height="106" rx="46" fill="none" stroke="#FFFFFF" stroke-opacity="0.075" stroke-width="1.4"/>
+    <path d="M57 53c15-13 38-20 62-19" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <path d="M44 70c7-17 22-28 42-32" stroke="#FFE9A0" stroke-opacity="0.52" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <path d="M196 105c-5 17-20 28-39 32" stroke="#B77A12" stroke-opacity="0.38" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Antenna base -->
+  <rect x="110" y="28.5" width="20" height="8" rx="4" fill="url(#rgGoldVertical)" stroke="#4A3108" stroke-width="0.9"/>
+  <path d="M114 30.5h12" stroke="#FFF9D6" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Face visor -->
+  <rect x="53" y="51" width="134" height="76" rx="38" fill="url(#rgVisor)" stroke="url(#rgGold)" stroke-width="2.6"/>
+  <rect x="59" y="57" width="122" height="64" rx="32" fill="none" stroke="#F8D46A" stroke-opacity="0.38" stroke-width="1.1"/>
+  <path d="M69 66c14-11 34-15 54-15" stroke="#FFFFFF" stroke-opacity="0.13" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <path d="M78 114c9 6 22 9 36 9" stroke="#F8D46A" stroke-opacity="0.16" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  <!-- Glowing oval eyes -->
+
+  <ellipse cx="94" cy="88" rx="13" ry="17" fill="url(#rgEye)"/>
+  <ellipse cx="146" cy="88" rx="13" ry="17" fill="url(#rgEye)"/>
+  <ellipse cx="94" cy="88" rx="13" ry="17" fill="none" stroke="#FFE99A" stroke-opacity="0.85" stroke-width="1.2"/>
+  <ellipse cx="146" cy="88" rx="13" ry="17" fill="none" stroke="#FFE99A" stroke-opacity="0.85" stroke-width="1.2"/>
+  <ellipse cx="90" cy="82" rx="4" ry="5.2" fill="#FFFFFF" opacity="0.92"/>
+  <ellipse cx="142" cy="82" rx="4" ry="5.2" fill="#FFFFFF" opacity="0.92"/>
+  <ellipse cx="98" cy="95" rx="2" ry="2.8" fill="#A96808" opacity="0.42"/>
+  <ellipse cx="150" cy="95" rx="2" ry="2.8" fill="#A96808" opacity="0.42"/>
+
+  <!-- Friendly smile -->
+  <path d="M106 110c4 4 9 6 14 6s10-2 14-6" fill="none" stroke="url(#rgGold)" stroke-width="2.4" stroke-linecap="round"/>
+
+  <!-- Neck -->
+  <g>
+    <rect x="103" y="143" width="34" height="20" rx="10" fill="url(#rgBody)" stroke="url(#rgGold)" stroke-width="2.5"/>
+    <rect x="110" y="148" width="20" height="8" rx="4" fill="url(#rgGoldVertical)" opacity="0.9"/>
+    <path d="M108 147c3-2 7-3 12-3" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Torso -->
+  <g>
+    <rect x="62" y="157" width="116" height="84" rx="34" fill="url(#rgBody)" stroke="url(#rgGold)" stroke-width="3.2"/>
+    <rect x="62" y="157" width="116" height="84" rx="34" fill="url(#rgBodySheen)" opacity="0.9"/>
+    <rect x="67" y="162" width="106" height="74" rx="29" fill="none" stroke="#FFFFFF" stroke-opacity="0.065" stroke-width="1.2"/>
+    <path d="M82 176c12-9 28-13 44-13" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M69 190c5-14 16-23 31-27" stroke="#FFE9A0" stroke-opacity="0.32" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Chest panel with three golden lines -->
+  <rect x="87" y="183" width="66" height="40" rx="12" fill="#040608" stroke="url(#rgGold)" stroke-width="2.2"/>
+  <rect x="91" y="187" width="58" height="32" rx="8" fill="none" stroke="#F8D46A" stroke-opacity="0.2" stroke-width="0.9"/>
+  <rect x="98" y="192.4" width="44" height="3.4" rx="1.7" fill="url(#rgGoldVertical)"/>
+  <rect x="98" y="201.4" width="36" height="3.4" rx="1.7" fill="url(#rgGoldVertical)"/>
+  <rect x="98" y="210.4" width="28" height="3.4" rx="1.7" fill="url(#rgGoldVertical)"/>
+  <circle cx="120" cy="229" r="3.2" fill="url(#rgGold)" opacity="0.9"/>
+
+  <!-- Shoulder joints -->
+  <circle cx="69" cy="176" r="10" fill="url(#rgGold)"/>
+  <circle cx="69" cy="176" r="5.4" fill="url(#rgBody)"/>
+  <circle cx="171" cy="176" r="10" fill="url(#rgGold)"/>
+  <circle cx="171" cy="176" r="5.4" fill="url(#rgBody)"/>
+
+  <!-- Left arm -->
+  <g>
+    <path d="M69 177C55 188 50 204 54 221" stroke="url(#rgGold)" stroke-width="24" stroke-linecap="round" fill="none"/>
+    <path d="M69 177C55 188 50 204 54 221" stroke="url(#rgBody)" stroke-width="18" stroke-linecap="round" fill="none"/>
+    <path d="M65 182c-8 8-12 18-12 28" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <circle cx="57" cy="205" r="5.5" fill="url(#rgGold)" stroke="#4A3108" stroke-width="0.7"/>
+    <circle cx="55" cy="225" r="12" fill="url(#rgBody)" stroke="url(#rgGold)" stroke-width="2.6"/>
+    <path d="M49 225h12" stroke="url(#rgGold)" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
+    <path d="M49 220c2-2 5-3 8-2" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Right arm -->
+  <g>
+    <path d="M171 177C185 188 190 204 186 221" stroke="url(#rgGold)" stroke-width="24" stroke-linecap="round" fill="none"/>
+    <path d="M171 177C185 188 190 204 186 221" stroke="url(#rgBody)" stroke-width="18" stroke-linecap="round" fill="none"/>
+    <path d="M175 182c8 8 12 18 12 28" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <circle cx="183" cy="205" r="5.5" fill="url(#rgGold)" stroke="#4A3108" stroke-width="0.7"/>
+    <circle cx="185" cy="225" r="12" fill="url(#rgBody)" stroke="url(#rgGold)" stroke-width="2.6"/>
+    <path d="M179 225h12" stroke="url(#rgGold)" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
+    <path d="M179 220c2-2 5-3 8-2" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Hip joints -->
+  <circle cx="94" cy="239" r="9" fill="url(#rgGold)"/>
+  <circle cx="94" cy="239" r="4.8" fill="url(#rgBody)"/>
+  <circle cx="146" cy="239" r="9" fill="url(#rgGold)"/>
+  <circle cx="146" cy="239" r="4.8" fill="url(#rgBody)"/>
+
+  <!-- Left leg -->
+  <g>
+    <path d="M94 240C93 250 93 261 93 272" stroke="url(#rgGold)" stroke-width="27" stroke-linecap="round" fill="none"/>
+    <path d="M94 240C93 250 93 261 93 272" stroke="url(#rgBody)" stroke-width="21" stroke-linecap="round" fill="none"/>
+    <path d="M88 248c-1 7-1 14-1 20" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <rect x="76" y="270" width="35" height="17" rx="8.5" fill="url(#rgBody)" stroke="url(#rgGold)" stroke-width="2.6" transform="rotate(-3 93.5 278.5)"/>
+    <path d="M83 280h20" stroke="url(#rgGold)" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <!-- Right leg -->
+  <g>
+    <path d="M146 240C147 250 147 261 147 272" stroke="url(#rgGold)" stroke-width="27" stroke-linecap="round" fill="none"/>
+    <path d="M146 240C147 250 147 261 147 272" stroke="url(#rgBody)" stroke-width="21" stroke-linecap="round" fill="none"/>
+    <path d="M152 248c1 7 1 14 1 20" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <rect x="129" y="270" width="35" height="17" rx="8.5" fill="url(#rgBody)" stroke="url(#rgGold)" stroke-width="2.6" transform="rotate(3 146.5 278.5)"/>
+    <path d="M137 280h20" stroke="url(#rgGold)" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  </g>
+</svg>

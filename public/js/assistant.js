@@ -35,8 +35,8 @@
     isTyping: false
   };
 
-  const ROBOT_IMAGE_SRC = "images/assistant-robot.svg";
-  const ROBOT_IMAGE_FALLBACK_SRC = "images/assistant-robot.png";
+  const ROBOT_IMAGE_SRC = "images/assistant-robot-black-gold.svg";
+  const ROBOT_IMAGE_FALLBACK_SRC = "images/assistant-robot-black-gold.png";
   const GREETING_STORAGE_KEY = "mmdgAssistantGreetingShown";
   let greetingEl = null;
   let greetingTimer = null;
