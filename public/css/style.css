@@ -285,6 +285,7 @@ h1, h2, h3, h4 {
 
 .header.transparent {
   background: rgba(0, 0, 0, 0.28);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: none;
@@ -315,6 +316,7 @@ h1, h2, h3, h4 {
 
 .header.transparent {
   background: rgba(0, 0, 0, 0.28);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: none;
