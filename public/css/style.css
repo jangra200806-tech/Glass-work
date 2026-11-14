@@ -486,15 +486,15 @@ body.nav-open {
     width: 44px;
     height: 44px;
     background: none;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 10px;
     cursor: pointer;
     padding: 0;
     z-index: 1002;
   }
 
-  .header .nav-toggle-line,
   .header.transparent .nav-toggle-line {
-    background: var(--navy);
+    background: var(--white);
   }
 
   .main-nav {
@@ -516,7 +516,7 @@ body.nav-open {
     top: 70px;
     left: 0;
     width: 100%;
-    background: var(--white);
+    background: var(--navy);
     flex-direction: column;
     padding: 1.5rem;
     gap: 0;
@@ -526,7 +526,7 @@ body.nav-open {
     overflow: hidden;
     transition: max-height 0.35s ease;
     border-bottom: 1px solid var(--border);
-    z-index: 999;
+    z-index: 9999;
   }
 
   .main-nav .nav-list.active {
@@ -548,6 +548,7 @@ body.nav-open {
     padding: 0;
     width: 100%;
     font-size: 1rem;
+    color: var(--white);
   }
 
   .main-nav .nav-link.active,
