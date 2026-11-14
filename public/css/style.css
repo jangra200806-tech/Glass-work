@@ -504,7 +504,7 @@ body.nav-open {
     width: 100%;
     background: var(--white);
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 0;
     gap: 0;
     box-shadow: var(--shadow-md);
     border-bottom: 1px solid var(--border);
