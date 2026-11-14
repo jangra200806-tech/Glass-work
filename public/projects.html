@@ -24,49 +24,99 @@
   <link rel="stylesheet" href="css/style.css?v=20261114navfix2">
   <link rel="stylesheet" href="css/assistant.css?v=20261113chatfix">
   <!-- header-v6 -->
-  <link rel="stylesheet" href="css/header.css?v=6">
+  <style id="gw-header-css">
+/* ========= MAA MANSA DEVI GLASS WORKS â€” HEADER (gw-*) ========= */
+.gw-header{position:sticky;top:0;z-index:10000;background:#102D4F;height:72px;width:100%;box-sizing:border-box;}
+.gw-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 16px;box-sizing:border-box;}
+.gw-brand{display:flex;align-items:center;gap:10px;min-width:0;text-decoration:none;color:#fff;}
+.gw-logo{height:44px;width:auto;flex-shrink:0;display:block;}
+.gw-name{font-family:'Playfair Display',serif;font-weight:700;color:#fff;font-size:18px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.gw-nav{display:flex;align-items:center;gap:28px;}
+.gw-nav-list{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none;}
+.gw-nav-link{color:#fff;font-size:15px;font-weight:500;line-height:1.2;text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;transition:color .2s ease,border-color .2s ease;}
+.gw-nav-link:hover,.gw-nav-link:focus,.gw-nav-link.active{color:#1685D4;border-bottom-color:#1685D4;}
+.gw-quote{display:inline-block;background:#1685D4;color:#fff;text-decoration:none;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:600;line-height:1;white-space:nowrap;transition:background .2s ease;}
+.gw-quote:hover,.gw-quote:focus{background:#0f6fb3;color:#fff;}
+.gw-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;flex-shrink:0;margin-left:auto;padding:0;background:transparent;border:1px solid #D4A017;border-radius:10px;color:#fff;cursor:pointer;}
+.gw-toggle svg{display:block;}
+.gw-toggle .gw-icon-close{display:none;}
+.gw-toggle[aria-expanded="true"] .gw-icon-open{display:none;}
+.gw-toggle[aria-expanded="true"] .gw-icon-close{display:block;}
+.gw-menu{display:none;}
+body.gw-menu-open{overflow:hidden;}
+
+@media (min-width:901px){
+  .gw-nav{display:flex;gap:28px;}
+  .gw-quote{display:inline-block;}
+  .gw-toggle{display:none !important;}
+  .gw-menu{display:none !important;}
+}
+
+@media (max-width:900px){
+  body{padding-top:0;}
+  .gw-header{height:64px;}
+  .gw-inner{height:64px;padding:0 12px;gap:10px;}
+  .gw-logo{height:38px;}
+  .gw-name{font-size:clamp(11px,3.3vw,15px);white-space:normal;overflow:visible;text-overflow:clip;}
+  .gw-nav{display:none;}
+  .gw-quote{display:none;}
+  .gw-toggle{display:flex;}
+  .gw-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#102D4F;z-index:99999;padding:8px 16px 16px;box-shadow:0 12px 24px rgba(0,0,0,.3);max-height:calc(100vh - 64px);overflow-y:auto;box-sizing:border-box;}
+  .gw-menu.open{display:block;}
+  .gw-menu .gw-nav-list{display:block;margin:0;padding:0;}
+  .gw-menu .gw-nav-list li{margin:0;padding:0;}
+  .gw-menu a{display:block;color:#fff;padding:14px 8px;font-size:16px;line-height:1.3;border-bottom:1px solid rgba(255,255,255,.12);text-decoration:none;}
+  .gw-menu a:hover,.gw-menu a:focus,.gw-menu a.active{color:#1685D4;}
+  .gw-menu .gw-menu-cta{margin-top:14px;background:#1685D4;border:0;border-radius:8px;text-align:center;font-weight:600;}
+  .gw-menu .gw-menu-cta:hover,.gw-menu .gw-menu-cta:focus{background:#0f6fb3;color:#fff;}
+}
+  </style>
 </head>
 <body>
 
   <!-- Skip to content -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- ================= CLEAN HEADER v6 ================= -->
+      <!-- ================= CLEAN HEADER v6 ================= -->
   <!-- header-v6 -->
-  <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <div class="logo">
-        <img src="images/logo-shield.svg" alt="MAA MANSA DEVI GLASS WORKS" class="logo-shield">
-        <span class="logo-text">MAA MANSA DEVI GLASS WORKS</span>
-      </div>
+  <header class="gw-header" id="gw-header">
+    <div class="gw-inner">
+      <a class="gw-brand" href="index.html" aria-label="MAA MANSA DEVI GLASS WORKS - Home">
+        <img src="images/logo.svg" alt="MAA MANSA DEVI GLASS WORKS logo" class="gw-logo" width="44" height="44">
+        <span class="gw-name">MAA MANSA DEVI GLASS WORKS</span>
+      </a>
 
-      <nav class="site-nav" id="site-nav">
-        <ul class="nav-list">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="products.html" class="nav-link">Products</a></li>
-          <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="projects.html" class="nav-link">Projects</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <nav class="gw-nav" id="gw-nav" aria-label="Primary">
+        <ul class="gw-nav-list">
+          <li><a href="index.html" class="gw-nav-link">Home</a></li>
+          <li><a href="about.html" class="gw-nav-link">About</a></li>
+          <li><a href="products.html" class="gw-nav-link">Products</a></li>
+          <li><a href="services.html" class="gw-nav-link">Services</a></li>
+          <li><a href="projects.html" class="gw-nav-link active" aria-current="page">Projects</a></li>
+          <li><a href="contact.html" class="gw-nav-link">Contact</a></li>
         </ul>
-        <div class="site-nav-cta">
-          <a href="tel:+918607774600" class="nav-cta-link">Call Now</a>
-        </div>
       </nav>
 
-      <div class="header-actions">
-        <a href="https://wa.me/918607774600" class="btn-whatsapp" id="whatsapp-btn" target="_blank" rel="noopener" aria-label="WhatsApp enquiry">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:block;"><path d="M20.573 1.141c-4.974 0-9.424 2.659-12.278 6.899-1.561 2.305-.594 5.477 1.361 7.698-1.191.178-2.255.556-3.075 1.234-.856.707-1.364 1.657-1.364 2.709 0 .237.029.468.071.695.183.985.548 1.887 1.195 2.545.739.75 1.615 1.388 2.584 1.898 1.395.731 2.915 1.087 4.492 1.087h.011c2.21 0 4.295-.515 6.192-1.461 1.573-.784 3.133-1.942 4.203-3.431.851-1.187 1.347-2.554 1.347-4.072 0-.262-.022-.521-.065-.777.164-1.065.527-2.028 1.131-2.85 1.664-2.273 4.492-3.808 7.499-3.808h.02c1.409 0 2.79.405 4.003 1.147 2.088 1.283 3.436 3.353 3.436 5.871 0 .526-.058 1.045-.153 1.554.549-.379 1.034-.827 1.44-1.336.804-1.009 1.241-2.179 1.241-3.464 0-4.142-2.973-7.557-6.782-7.557"/></svg>
-          <span>Get a Quote</span>
-        </a>
-        <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-          <span class="nav-toggle-line"></span>
-          <span class="nav-toggle-line"></span>
-          <span class="nav-toggle-line"></span>
-        </button>
-      </div>
+      <a class="gw-quote" href="contact.html#quote">Get a Quote</a>
+
+      <button class="gw-toggle" id="gw-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="gw-menu">
+        <svg class="gw-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M3 6h18"></path><path d="M3 12h18"></path><path d="M3 18h18"></path></svg>
+        <svg class="gw-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M5 5l14 14"></path><path d="M19 5L5 19"></path></svg>
+      </button>
     </div>
   </header>
+
+  <nav class="gw-menu" id="gw-menu" aria-label="Mobile">
+        <ul class="gw-nav-list">
+          <li><a href="index.html" class="gw-nav-link">Home</a></li>
+          <li><a href="about.html" class="gw-nav-link">About</a></li>
+          <li><a href="products.html" class="gw-nav-link">Products</a></li>
+          <li><a href="services.html" class="gw-nav-link">Services</a></li>
+          <li><a href="projects.html" class="gw-nav-link active" aria-current="page">Projects</a></li>
+          <li><a href="contact.html" class="gw-nav-link">Contact</a></li>
+        </ul>
+    <a class="gw-menu-cta" href="tel:+918607774600">Call Now</a>
+  </nav>
 
   <main id="main-content">
 
@@ -167,7 +217,7 @@
 
   <!-- ================= LIGHTBOX ================= -->
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Close image">×</button>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close image">&times;</button>
     <img alt="Project" class="lightbox-img" id="lightbox-img">
     <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
@@ -176,6 +226,53 @@
   <script src="js/script.js?v=20261112v" defer></script>
   <script src="js/assistant-knowledge.js?v=20261112v" defer></script>
   <script src="js/assistant.js?v=20261113chatfix" defer></script>
-  <script src="js/header.js?v=6" defer></script>
+  <script id="gw-header-js">
+(function () {
+  "use strict";
+  var menu = document.getElementById("gw-menu");
+  var toggle = document.getElementById("gw-toggle");
+  if (!menu || !toggle) return;
+
+  function setOpen(open) {
+    if (open) {
+      menu.classList.add("open");
+    } else {
+      menu.classList.remove("open");
+    }
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Menu");
+    if (open) {
+      document.body.classList.add("gw-menu-open");
+    } else {
+      document.body.classList.remove("gw-menu-open");
+    }
+  }
+
+  toggle.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    setOpen(!menu.classList.contains("open"));
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!menu.classList.contains("open")) return;
+    if (menu.contains(event.target) || toggle.contains(event.target)) return;
+    setOpen(false);
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" || event.key === "Esc") setOpen(false);
+  });
+
+  menu.addEventListener("click", function (event) {
+    var link = event.target.closest("a");
+    if (link) setOpen(false);
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 900) setOpen(false);
+  });
+})();
+  </script>
 </body>
 </html>

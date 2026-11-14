@@ -336,15 +336,19 @@
   let headerTransparent = true;
   function updateNavbar() {
     const scrollY = window.scrollY;
-    if (scrollY > 120 && headerTransparent) {
-      header.classList.remove("transparent");
-      headerTransparent = false;
-    } else if (scrollY <= 80 && !headerTransparent) {
-      header.classList.add("transparent");
-      headerTransparent = true;
+    if (header) {
+      if (scrollY > 120 && headerTransparent) {
+        header.classList.remove("transparent");
+        headerTransparent = false;
+      } else if (scrollY <= 80 && !headerTransparent) {
+        header.classList.add("transparent");
+        headerTransparent = true;
+      }
     }
-    if (scrollY > 400) backToTop.classList.add("visible");
-    else backToTop.classList.remove("visible");
+    if (backToTop) {
+      if (scrollY > 400) backToTop.classList.add("visible");
+      else backToTop.classList.remove("visible");
+    }
   }
   window.addEventListener("scroll", () => {
     if (!ticking) {
