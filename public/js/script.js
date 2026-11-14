@@ -355,17 +355,50 @@
   backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
   /* ---------- Mobile Nav ---------- */
+  const setNavOpen = (open) => {
+    if (!navToggle || !navList) return;
+    navList.classList.toggle("active", open);
+    navToggle.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("nav-open", open);
+  };
+
   if (navToggle && navList) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = navList.classList.toggle("active");
-      navToggle.setAttribute("aria-expanded", isOpen);
+    navToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setNavOpen(!navList.classList.contains("active"));
     });
+
+    document.addEventListener("click", (event) => {
+      if (
+        navList.classList.contains("active") &&
+        !navList.contains(event.target) &&
+        !navToggle.contains(event.target)
+      ) {
+        setNavOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && navList.classList.contains("active")) {
+        setNavOpen(false);
+      }
+    });
+
     navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        navList.classList.remove("active");
-        navToggle.setAttribute("aria-expanded", "false");
-      });
+      link.addEventListener("click", () => setNavOpen(false));
     });
+
+    if (!navList.querySelector(".nav-cta-item")) {
+      const cta = document.createElement("li");
+      cta.className = "nav-cta-item";
+      const ctaLink = document.createElement("a");
+      ctaLink.className = "nav-cta-link btn-secondary";
+      ctaLink.href = "tel:+918607774600";
+      ctaLink.textContent = "Call Now";
+      cta.appendChild(ctaLink);
+      navList.appendChild(cta);
+      cta.addEventListener("click", () => setNavOpen(false));
+    }
   }
 
   /* ---------- Contact Form ---------- */

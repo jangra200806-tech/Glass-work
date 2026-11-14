@@ -5,8 +5,8 @@ const BUSINESS = {
   state: "Haryana",
   country: "India",
   address: "Near Hanuman Vatika, Karnal Road, Near Railway Crossing, Friends Colony, Kaithal, Haryana - 136027, India",
-  phones: ["+918607774600", "+919812739362"],
-  whatsapp: "917082014381",
+  phones: ["+918607774600", "+917082014381"],
+  whatsapp: "918607774600",
   hours: [
     { days: "Monday - Saturday", time: "9:00 AM - 6:00 PM" },
     { days: "Sunday", time: "9:00 AM - 1:00 PM" }

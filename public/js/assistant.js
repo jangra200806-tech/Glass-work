@@ -5,8 +5,8 @@
     business: {
       name: "MAA MANSA DEVI GLASS WORKS",
       address: "Near Hanuman Vatika, Karnal Road, Near Railway Crossing, Friends Colony, Kaithal, Haryana - 136027, India",
-      phones: ["+918607774600", "+919812739362"],
-      whatsapp: "917082014381",
+      phones: ["+918607774600", "+917082014381"],
+      whatsapp: "918607774600",
       hours: [
         { days: "Monday - Saturday", time: "9:00 AM - 6:00 PM" },
         { days: "Sunday", time: "9:00 AM - 1:00 PM" }
@@ -320,10 +320,43 @@
       return;
     }
     if (action === "whatsapp") {
-      window.open("https://wa.me/917082014381", "_blank");
+      window.open("https://wa.me/918607774600", "_blank");
       return;
     }
     send(action);
+  }
+
+  function getSmallTalkReply(input) {
+    const text = String(input || "")
+      .toLowerCase()
+      .replace(/[,.!?;:]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    const greetings = new Set([
+      "hi", "hii", "hiii", "hello", "helo", "hlo", "hey", "namaste", "namaskar",
+      "good morning", "good afternoon", "good evening"
+    ]);
+    const thanks = new Set(["thanks", "thank you", "thankyou", "thx", "shukriya", "dhanyavad", "dhanyavaad"]);
+    const bye = new Set(["bye", "goodbye", "good bye", "see you", "see ya", "alvida"]);
+
+    if (greetings.has(text)) {
+      return {
+        text: "Namaste! Main MAA MANSA DEVI GLASS WORKS Assistant hoon. Products, services, timings, address, projects ya voice tour ke baare me pooch sakte hain."
+      };
+    }
+    if (thanks.has(text)) {
+      return { text: "Aapka swagat hai! Koi aur sawal ho to zaroor poochhein." };
+    }
+    if (bye.has(text)) {
+      return { text: "Dhanyavaad! Phir milte hain." };
+    }
+    return null;
+  }
+
+  function useLocalFallback(value) {
+    const fallback = getAssistantReply(value);
+    addAssistantMessage(fallback.text, { quickReplies: fallback.quickReplies || [] });
   }
 
   function getAssistantReply(input) {
@@ -406,7 +439,7 @@
 
     if (has("call", "phone", "whatsapp", "contact", "number", "enquiry", "quote", "free quote", "get quote")) {
       return {
-        text: "Call +91 8607774600 ya WhatsApp +91 7082014381 par contact karein. Free quote ke liye contact page/form use karein.",
+        text: "Call +91 8607774600 ya WhatsApp +91 8607774600 par contact karein. Free quote ke liye contact page/form use karein.",
         quickReplies: [{ label: "Call", action: "call" }, { label: "WhatsApp", action: "whatsapp" }]
       };
     }
@@ -445,6 +478,12 @@
       return;
     }
 
+    const smallTalk = getSmallTalkReply(value);
+    if (smallTalk) {
+      addAssistantMessage(smallTalk.text, { quickReplies: smallTalk.quickReplies || [] });
+      return;
+    }
+
     state.isTyping = true;
     launcher.classList.add("assistant-launcher-thinking");
     panel.classList.add("assistant-panel-thinking");
@@ -463,11 +502,25 @@
       });
 
       const data = await response.json().catch(() => null);
-      const reply = (data && typeof data.reply === "string" && data.reply.trim()) || getAssistantReply(value).text;
+
+      if (!response.ok || (data && typeof data.error === "string")) {
+        const code = data && typeof data.error === "string" ? data.error : `http_${response.status}`;
+        console.warn("[assistant] /api/chat error:", code);
+        useLocalFallback(value);
+        return;
+      }
+
+      const reply = data && typeof data.reply === "string" ? data.reply.trim() : "";
+      if (!reply) {
+        console.warn("[assistant] /api/chat error:", "empty_response");
+        useLocalFallback(value);
+        return;
+      }
+
       addAssistantMessage(reply, { quickReplies: Array.isArray(data?.quickReplies) ? data.quickReplies : [] });
     } catch (error) {
-      const fallback = getAssistantReply(value);
-      addAssistantMessage(fallback.text, { quickReplies: fallback.quickReplies || [] });
+      console.warn("[assistant] /api/chat error:", "network_error");
+      useLocalFallback(value);
     } finally {
       state.isTyping = false;
       launcher.classList.remove("assistant-launcher-thinking");
