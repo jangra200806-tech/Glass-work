@@ -12,8 +12,8 @@
   <link rel="canonical" href="https://maa-mansa-devi-glass-works.vercel.app/services">
   <meta property="og:title" content="Glass, Steel &amp; ACP Services in Kaithal | MAA MANSA DEVI">
   <meta property="og:description" content="Glass partition, windows and doors installation, steel fabrication, ACP cladding and custom fabrication services in Kaithal, Haryana.">
-  <meta property="og:image" content="https://maa-mansa-devi-glass-works.vercel.app/images/og-image.jpg">
-  <meta property="og:image:alt" content="MAA MANSA DEVI GLASS WORKS — glass, aluminium and UPVC work in Kaithal">
+  <meta property="og:image" content="https://maa-mansa-devi-glass-works.vercel.app/images/og-logo.png">
+  <meta property="og:image:alt" content="MAA MANSA DEVI GLASS WORKS — glass, aluminium, UPVC and ACP work in Kaithal">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
@@ -23,11 +23,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Glass, Steel &amp; ACP Services in Kaithal | MAA MANSA DEVI">
   <meta name="twitter:description" content="Glass partition, windows and doors installation, steel fabrication, ACP cladding and custom fabrication services in Kaithal, Haryana.">
-  <meta name="twitter:image" content="https://maa-mansa-devi-glass-works.vercel.app/images/og-image.jpg">
-  <meta name="twitter:image:alt" content="MAA MANSA DEVI GLASS WORKS — glass, aluminium and UPVC work in Kaithal">
+  <meta name="twitter:image" content="https://maa-mansa-devi-glass-works.vercel.app/images/og-logo.png">
+  <meta name="twitter:image:alt" content="MAA MANSA DEVI GLASS WORKS — glass, aluminium, UPVC and ACP work in Kaithal">
   <meta name="twitter:image:width" content="1200">
   <meta name="twitter:image:height" content="630">
-  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" href="favicon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -39,8 +41,9 @@
 .gw-header{position:sticky;top:0;z-index:10000;background:#102D4F;height:72px;width:100%;box-sizing:border-box;}
 .gw-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 16px;box-sizing:border-box;}
 .gw-brand{display:flex;align-items:center;gap:10px;min-width:0;text-decoration:none;color:#fff;}
-.gw-logo{height:44px;width:auto;flex-shrink:0;display:block;}
-.gw-name{font-family:'Playfair Display',serif;font-weight:700;color:#fff;font-size:18px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.gw-logo{height:46px;width:auto;flex-shrink:0;display:block;}
+.gw-logo-icon{display:none;}
+.gw-name{display:none;}
 .gw-nav{display:flex;align-items:center;gap:28px;}
 .gw-nav-list{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none;}
 .gw-nav-link{color:#fff;font-size:15px;font-weight:500;line-height:1.2;text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;transition:color .2s ease,border-color .2s ease;}
@@ -66,8 +69,9 @@ body.gw-menu-open{overflow:hidden;}
   body{padding-top:0;}
   .gw-header{height:64px;}
   .gw-inner{height:64px;padding:0 12px;gap:10px;}
-  .gw-logo{height:38px;}
-  .gw-name{font-size:clamp(11px,3.3vw,15px);white-space:normal;overflow:visible;text-overflow:clip;}
+  .gw-logo{display:none;}
+  .gw-logo-icon{display:block;height:40px;width:40px;}
+  .gw-name{display:block;font-family:'Playfair Display',serif;font-weight:700;color:#fff;font-size:clamp(12px,3.6vw,16px);line-height:1.15;white-space:normal;overflow:hidden;max-height:2.3em;}
   .gw-nav{display:none;}
   .gw-quote{display:none;}
   .gw-toggle{display:flex;}
@@ -231,7 +235,8 @@ body.gw-menu-open{overflow:hidden;}
     <!-- header-final -->
     <div class="gw-inner">
       <a class="gw-brand" href="index.html" aria-label="MAA MANSA DEVI GLASS WORKS - Home">
-        <img src="images/logo.svg" alt="MAA MANSA DEVI GLASS WORKS logo" class="gw-logo" width="44" height="44">
+        <img src="images/logo-full.svg" alt="MAA MANSA DEVI GLASS WORKS logo" class="gw-logo gw-logo-full" width="202" height="46">
+        <img src="images/logo-icon.svg" alt="MAA MANSA DEVI GLASS WORKS logo" class="gw-logo gw-logo-icon" width="40" height="40">
         <span class="gw-name">MAA MANSA DEVI GLASS WORKS</span>
       </a>
 
@@ -293,7 +298,7 @@ body.gw-menu-open{overflow:hidden;}
     <div class="container footer-grid">
       <div class="footer-brand reveal">
         <div class="logo">
-          <img src="images/logo.svg" alt="MAA MANSA DEVI GLASS WORKS logo" class="logo-img" width="210" height="60">
+          <img src="images/logo-full.svg" alt="MAA MANSA DEVI GLASS WORKS logo" class="logo-img" width="176" height="40">
           <span class="logo-text">MAA MANSA DEVI GLASS WORKS</span>
         </div>
         <p class="footer-desc">Premium glass, aluminium, steel, UPVC and ACP fabrication serving Kaithal, Haryana with quality and precision.</p>
