@@ -642,11 +642,6 @@ body.nav-open {
   opacity: 1;
 }
 
-/* Keep the first hero photo darker for stronger text contrast */
-.hero-slide--dark::before {
-  filter: brightness(0.55);
-}
-
 .hero-slide.active {
   opacity: 1;
   visibility: visible;
@@ -1930,15 +1925,6 @@ section[id] {
   .hero-slide.active {
     position: static;
     display: flex;
-  }
-
-  .hero-slide::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(rgba(16, 45, 79, 0.45), rgba(16, 45, 79, 0.75));
-    z-index: 1;
-    pointer-events: none;
   }
 
   .hero-content {
