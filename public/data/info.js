@@ -7,6 +7,9 @@ const BUSINESS = {
   address: "Near Hanuman Vatika, Karnal Road, Near Railway Crossing, Friends Colony, Kaithal, Haryana - 136027, India",
   phones: ["+918607774600", "+917082014381"],
   whatsapp: "918607774600",
+  // Optional: direct POST endpoint (e.g. Formspree "https://formspree.io/f/xxxx")
+  // — server par /api/enquiry fail ho to yah fallback use hota hai.
+  enquiryFallbackEndpoint: "",
   hours: [
     { days: "Monday - Saturday", time: "9:00 AM - 6:00 PM" },
     { days: "Sunday", time: "9:00 AM - 1:00 PM" }
