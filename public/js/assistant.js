@@ -485,6 +485,7 @@
     const value = (raw || "").trim();
     if (!value) return;
     addUserMessage(value);
+    inputEl.value = "";
     const lower = value.toLowerCase();
     if (lower.includes("voice tour")) {
       startTour();
