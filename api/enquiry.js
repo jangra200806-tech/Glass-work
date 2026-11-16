@@ -159,7 +159,8 @@ async function sendEmailBrevo(enquiry) {
       body: JSON.stringify({
         sender: { name: senderName, email: senderEmail },
         to: to.split(",").map((s) => s.trim()).filter(Boolean).map((email) => ({ email })),
-        replyTo: { email: enquiry.phone, name: enquiry.name },
+        // Customer ka email nahi hota (sirf phone), isliye reply business inbox me jaata hai
+        replyTo: { email: to.split(",")[0].trim(), name: senderName },
         subject: `New Enquiry — ${enquiry.name} (${enquiry.service || "General"})`,
         htmlContent: html,
         textContent: lines.join("\n")
