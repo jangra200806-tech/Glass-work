@@ -161,12 +161,24 @@
     <div class="assistant-header">
       <div class="assistant-brand">
         <span class="assistant-avatar assistant-avatar-header" id="assistant-header-avatar" aria-hidden="true"></span>
-        <span class="assistant-title">MAA MANSA DEVI GLASS WORKS Assistant</span>
+        <span class="assistant-title-wrap">
+          <span class="assistant-title">MAA MANSA Assistant</span>
+          <span class="assistant-status"><i aria-hidden="true"></i> Online • Instant replies</span>
+        </span>
       </div>
       <div class="assistant-header-actions">
         <button class="assistant-lang" type="button" aria-label="Change language">${state.assistantLang === "hi-IN" ? "HI" : "EN"}</button>
         <button class="assistant-close" id="assistant-close" type="button" aria-label="Close assistant">×</button>
       </div>
+    </div>
+    <div class="assistant-quickbar" id="assistant-quickbar" aria-label="Quick actions">
+      <button type="button" data-q="Products">Products</button>
+      <button type="button" data-q="Services">Services</button>
+      <button type="button" data-q="Timings">Timings</button>
+      <button type="button" data-q="Address">Address</button>
+      <button type="button" data-q="Voice Tour">Voice Tour</button>
+      <button type="button" data-action="call" class="assistant-quick-call">Call</button>
+      <button type="button" data-action="whatsapp" class="assistant-quick-wa">WhatsApp</button>
     </div>
     <div class="assistant-messages" id="assistant-messages"></div>
     <div class="assistant-controls" id="assistant-controls">
@@ -177,9 +189,9 @@
       <button type="button" data-action="stop">Stop</button>
     </div>
     <div class="assistant-input-row">
-      <input id="assistant-input" type="text" placeholder="Apni sawal likhein..." autocomplete="off">
-      <button id="assistant-send" type="button" aria-label="Send message">➤</button>
-      <button id="assistant-mic" type="button" aria-label="Voice input">🎤</button>
+      <input id="assistant-input" class="assistant-input" type="text" placeholder="Apna sawal likhein..." autocomplete="off">
+      <button id="assistant-send" class="assistant-send" type="button" aria-label="Send message">➤</button>
+      <button id="assistant-mic" class="assistant-mic" type="button" aria-label="Voice input">🎤</button>
     </div>
   `;
 
@@ -191,6 +203,7 @@
 
   const closeBtn = panel.querySelector("#assistant-close");
   const langBtn = panel.querySelector(".assistant-lang");
+  const quickbarEl = panel.querySelector("#assistant-quickbar");
   const messagesEl = panel.querySelector("#assistant-messages");
   const controlsEl = panel.querySelector("#assistant-controls");
   const inputEl = panel.querySelector("#assistant-input");
@@ -727,11 +740,9 @@
         hideGreeting();
         if (!state.welcomeAdded) {
           state.welcomeAdded = true;
-          addAssistantMessage("Namaste! Main MAA MANSA DEVI GLASS WORKS Assistant hoon. Aap mujhse products, services, timings, address, projects ya voice tour pooch sakte hain.", { quickReplies: [
-            { label: "Products dekho", message: "Products dekho" },
+          addAssistantMessage("Namaste! Main MAA MANSA Assistant hoon. Neeche quick buttons se Products, Services, Timings ya Address poochhein — ya apna sawal likhein.", { quickReplies: [
+            { label: "Products", message: "Products" },
             { label: "Services", message: "Services" },
-            { label: "Timings", message: "Timings" },
-            { label: "Address", message: "Address" },
             { label: "Voice Tour", message: "Voice Tour" }
           ] });
         }
@@ -757,6 +768,13 @@
     });
 
     micBtn.addEventListener("click", startVoiceInput);
+
+    quickbarEl.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      if (btn.dataset.action) handleQuickAction(btn.dataset.action);
+      else if (btn.dataset.q) send(btn.dataset.q);
+    });
 
     controlsEl.addEventListener("click", (e) => {
       const btn = e.target.closest("button");
