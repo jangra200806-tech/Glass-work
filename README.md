@@ -65,6 +65,10 @@ Naye page banane ka flow: `tools/build-pages.cjs` me page definition add karo â†
 4. Admin login:
    - Password from `.env` file (`ADMIN_PASSWORD`)
 
+> Admin panel sirf **local server** par chalta hai (`admin/index.html` + `routes/admin.js`).
+> Vercel par ye deploy nahi hota â€” wahan ke liye database (Vercel KV / Postgres) chahiye.
+> Isliye production me `/admin` se koi broken login page nahi dikhta.
+
 ## Notes
 - Do not share `.env` file.
 - Images uploaded via admin panel save to `public/images/uploads/`.
