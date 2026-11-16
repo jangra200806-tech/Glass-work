@@ -76,6 +76,9 @@ Website pages:
 - Services: glass partition, windows & doors, steel fabrication, ACP cladding, custom fabrication, mirror fitting.
 - Projects: actual work gallery with Glass, Steel, Aluminium, UPVC and ACP categories.
 - Contact: address, timings, phone numbers, WhatsApp, map and enquiry form for a free quote.
+- Pricing (/pricing): indicative rate list. Approximate rates per sq.ft. — toughened glass 8mm ₹95-140, 10mm ₹125-175, 12mm ₹160-220, laminated glass ₹180-320, frosted/etched ₹160-280, patterned/wired ₹120-200, framed glass partition ₹180-300, frameless partition ₹280-450, ACP cladding ₹165-260, UPVC windows & doors ₹320-520, aluminium windows & doors ₹230-380, steel grills & railings ₹120-200, main gates ₹250-450, mirror fitting ₹60-120, shower cubicle ₹9000-18000 per set. Ye sirf indicative rates hain — final price site measurement, brand, finish aur hardware par depend karta hai. Measurement aur site visit free hai. Price poochho to ye range batao aur /pricing page ya quote ke liye WhatsApp/contact par bhejo.
+- Service Areas (/service-areas): shop Karnal Road, Kaithal me. Kaam Karnal, Kurukshetra, Yamunanagar, Narwana, Assand, Pipli, Khanaur aur Kalayat jaise aas-pas shehron me bhi hota hai. Door ke shehar ke liye availability pehle WhatsApp par confirm karo. Travelling charge project ke hisaab se hota hai.
+- Privacy Policy (/privacy-policy): contact form se sirf naam, phone aur message lete hain; enquiry email (Brevo) aur WhatsApp dono par jaati hai; data ka use sirf enquiry reply karne ke liye.
 
 Rules:
 - User Hindi, English ya Hinglish me poochhe to usi bhasha me chhota aur simple jawab do.
@@ -118,6 +121,18 @@ function getHistory(messages, limit = HISTORY_LIMIT) {
 function getQuickReplies(message) {
   const text = String(message || "").toLowerCase();
   const has = (...words) => words.some((w) => text.includes(w));
+  if (has("price", "rate", "cost", "charges", "kitna", "kharcha", "rate list", "pricing")) {
+    return [
+      { label: "Rate list dekhein", action: "navigate:pricing" },
+      { label: "Free quote", action: "navigate:contact" }
+    ];
+  }
+  if (has("area", "kaithal ke bahar", "karnal", "kurukshetra", "yamunanagar", "narwana", "assand", "nearby", "kahan")) {
+    return [
+      { label: "Service areas", action: "navigate:service-areas" },
+      { label: "Call", action: "call" }
+    ];
+  }
   if (has("product", "glass", "aluminium", "aluminum", "steel", "upvc", "acp", "kaanch", "shisha", "facade", "cladding", "kitchen", "partition", "window", "door", "railing", "gate", "modular", "paneel")) {
     return [{ label: "Products page kholo", action: "navigate:products" }];
   }

@@ -12,6 +12,47 @@
   const PRIMARY_PHONE = PHONES[0] || "";
   const WHATSAPP_DIGITS = String(BIZ.whatsapp || PRIMARY_PHONE).replace(/\D/g, "");
 
+  /* ---------- Analytics (GA4 / GTM ready) ---------- */
+  function trackEvent(name, params) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: name }, params || {}));
+      if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+    } catch (e) {
+      /* tracking kabhi site ko na roke */
+    }
+  }
+
+  /* GA4 measurement ID info.js me set karo (gaId: "G-XXXXXXX") — tab se hi load hoga */
+  const GA_ID = String(BIZ.gaId || "").trim();
+  if (GA_ID) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+    const gaScript = document.createElement("script");
+    gaScript.async = true;
+    gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`;
+    document.head.appendChild(gaScript);
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID, { anonymize_ip: true });
+  }
+
+  /* Call / WhatsApp clicks track karo (leads ka source dekhne ke liye) */
+  document.addEventListener("click", function (e) {
+    const link = e.target && e.target.closest ? e.target.closest("a") : null;
+    if (!link) return;
+    const href = link.getAttribute("href") || "";
+    if (href.indexOf("tel:") === 0) {
+      trackEvent("call_click", { phone: href.replace("tel:", ""), page: location.pathname });
+    } else if (href.indexOf("wa.me") !== -1) {
+      const section = link.closest("section, footer, header, main");
+      trackEvent("whatsapp_click", {
+        placement: (section && (section.id || section.className)) || "page",
+        page: location.pathname
+      });
+    }
+  }, { passive: true });
+
   function displayPhone(phone) {
     const digits = String(phone).replace(/\D/g, "");
     const local = digits.startsWith("91") ? digits.slice(2) : digits;
@@ -483,6 +524,10 @@
         contactForm.reset();
 
         const saved = server.ok || fallback;
+        trackEvent("enquiry_submit", {
+          service: service || "general",
+          delivery: saved ? (server.ok ? "server" : "fallback") : "whatsapp_only"
+        });
         if (waUrl && waTab) {
           showFormMsg(
             saved

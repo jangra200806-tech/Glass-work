@@ -329,6 +329,14 @@
       document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
+    if (action === "navigate:pricing") {
+      window.location.href = "pricing.html";
+      return;
+    }
+    if (action === "navigate:service-areas") {
+      window.location.href = "service-areas.html";
+      return;
+    }
     if (action === "call") {
       window.open("tel:+918607774600", "_blank");
       return;
@@ -379,8 +387,21 @@
 
     if (has("price", "cost", "discount", "offer", "rate", "kitna", "paisa", "charge", "charges", "rupee")) {
       return {
-        text: "Iski jankari mere paas nahi hai, kripya call karein: 8607774600",
-        quickReplies: [{ label: "Call", action: "call" }, { label: "WhatsApp", action: "whatsapp" }]
+        text: "Hamari website par indicative rate list hai — toughened glass 8mm ₹95-140, 10mm ₹125-175, 12mm ₹160-220, laminated ₹180-320, ACP cladding ₹165-260, UPVC ₹320-520 per sq.ft. Final price site measurement par depend karta hai (measurement free hai).",
+        quickReplies: [
+          { label: "Rate list dekhein", action: "navigate:pricing" },
+          { label: "Call", action: "call" }
+        ]
+      };
+    }
+
+    if (has("area", "kahan", "kaithal ke bahar", "karnal", "kurukshetra", "yamunanagar", "narwana", "assand", "nearby")) {
+      return {
+        text: "Hamari shop Karnal Road, Kaithal me hai aur Karnal, Kurukshetra, Yamunanagar, Narwana, Assand, Pipli, Khanaur aur Kalayat me bhi kaam karte hain. Door ke liye WhatsApp par confirm kar lein.",
+        quickReplies: [
+          { label: "Service areas", action: "navigate:service-areas" },
+          { label: "WhatsApp", action: "whatsapp" }
+        ]
       };
     }
 

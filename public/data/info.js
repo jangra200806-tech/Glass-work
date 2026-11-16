@@ -10,6 +10,9 @@ const BUSINESS = {
   // Optional: direct POST endpoint (e.g. Formspree "https://formspree.io/f/xxxx")
   // — server par /api/enquiry fail ho to yah fallback use hota hai.
   enquiryFallbackEndpoint: "",
+  // Optional: Google Analytics 4 measurement ID (jaise "G-XXXXXXXXXX").
+  // Khali chhodne par tracking script load nahi hota.
+  gaId: "",
   hours: [
     { days: "Monday - Saturday", time: "9:00 AM - 6:00 PM" },
     { days: "Sunday", time: "9:00 AM - 1:00 PM" }

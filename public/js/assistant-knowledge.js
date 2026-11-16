@@ -87,6 +87,33 @@
             "Contact section me address, timings, phone numbers, WhatsApp aur map info hain.",
             "Free quote aur enquiry contact form/Whtsapp se mil sakti hain."
           ]
+        },
+        {
+          id: "pricing",
+          label: "Pricing",
+          title: "Rates & Pricing",
+          content: [
+            "Website par Pricing page par indicative rate list hai — toughened glass 8/10/12 mm, laminated, frosted/etched, patterned, ACP cladding, UPVC, aluminium, steel grill aur main gate ke approximate rates.",
+            "Rates sirf indication ke liye hain — final price site measurement, brand, finish aur hardware par depend karta hai. Measurement aur site visit FREE hai.",
+            "Pricing page par user ko guide karein ya usse quote ke liye WhatsApp/contact par bhejein."
+          ]
+        },
+        {
+          id: "service-areas",
+          label: "Service Areas",
+          title: "Service Areas",
+          content: [
+            "Kaithal me hamari shop Karnal Road par hai. Kaam Karnal, Kurukshetra, Yamunanagar, Narwana, Assand, Pipli, Khanaur aur Kalayat jaise aas-pas ke shehron me bhi hota hai.",
+            "Door ke shehar ke liye availability pehle WhatsApp par confirm karein. Travelling charge project ke hisaab se hota hai aur quotation me pehle bata diya jata hai."
+          ]
+        },
+        {
+          id: "privacy",
+          label: "Privacy Policy",
+          title: "Privacy Policy",
+          content: [
+            "Privacy Policy page par batata hai ki contact form se sirf naam, phone aur message lete hain, enquiry email aur WhatsApp dono par jaati hai, aur data ka use sirf enquiry reply karne ke liye hota hai."
+          ]
         }
       ]
     };

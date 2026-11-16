@@ -1,0 +1,235 @@
+/* ========================================
+   MAA MANSA DEVI GLASS WORKS
+   Extra components — rate list, service areas, trust strip
+   (linked after style.css)
+   ======================================== */
+
+/* ================= RATE LIST (pricing page) ================= */
+.rate-table-wrap {
+  margin-top: 3rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+.rate-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  min-width: 520px;
+}
+
+.rate-caption {
+  caption-side: top;
+  text-align: left;
+  padding: 1.1rem 1.25rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--navy);
+  background: var(--bg-light, #f4f6f9);
+  border-bottom: 1px solid var(--border);
+}
+
+.rate-table thead th {
+  text-align: left;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #5b6b7f);
+  background: var(--bg-light, #f4f6f9);
+  border-bottom: 1px solid var(--border);
+}
+
+.rate-table tbody td {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.rate-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.rate-table tbody tr:nth-child(even) {
+  background: #fafbfd;
+}
+
+.rate-range {
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.rate-unit {
+  color: var(--text-muted, #5b6b7f);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.rate-note {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-muted, #5b6b7f);
+}
+
+.rate-note a {
+  color: var(--sky-dark);
+  font-weight: 600;
+}
+
+/* ================= SERVICE AREAS ================= */
+.areas-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.area-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.area-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--sky);
+}
+
+.area-card--main {
+  border-color: var(--sky);
+  box-shadow: var(--shadow-md);
+}
+
+.area-name {
+  font-family: var(--font-display, 'Playfair Display', serif);
+  font-size: 1.3rem;
+  color: var(--navy);
+  margin-bottom: 0.35rem;
+}
+
+.area-distance {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--sky-dark);
+  background: rgba(22, 133, 212, 0.09);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  margin-bottom: 0.8rem;
+}
+
+.area-note {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-muted, #5b6b7f);
+}
+
+/* ================= TRUST STRIP (homepage) ================= */
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.trust-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--sky);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.trust-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.trust-stars {
+  color: #d4a017;
+  font-size: 1.15rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.trust-score {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1.05rem;
+}
+
+.trust-source {
+  font-size: 0.8rem;
+  color: var(--text-muted, #5b6b7f);
+}
+
+.trust-title {
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+}
+
+.trust-text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-muted, #5b6b7f);
+}
+
+/* ================= 404 ================= */
+.error-code {
+  font-family: var(--font-display, 'Playfair Display', serif);
+  font-size: clamp(4rem, 14vw, 8rem);
+  line-height: 1;
+  color: var(--sky);
+  margin-bottom: 0.5rem;
+}
+
+/* ================= PRIVACY / LEGAL ================= */
+.legal-block h3 {
+  margin-top: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-block p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.legal-block a {
+  color: var(--sky-dark);
+  font-weight: 600;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 640px) {
+  .rate-table {
+    font-size: 0.88rem;
+    min-width: 440px;
+  }
+
+  .rate-table thead th,
+  .rate-table tbody td {
+    padding: 0.7rem 0.9rem;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+}

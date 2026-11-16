@@ -7,7 +7,44 @@ Plain HTML/CSS/JS frontend with Node.js + Express backend. Data stored in JSON f
 - `public/` — Frontend (HTML, CSS, JS, images)
 - `routes/` — API routes (products, projects, enquiries, admin)
 - `data/` — JSON files (products.json, projects.json, enquiries.json)
+- `api/` — Vercel serverless functions (`chat.js` = AI assistant, `enquiry.js` = lead capture)
+- `tools/` — build/verify scripts (naye pages generate karne + link check ke liye)
 - `.env` — Secrets (PORT, ADMIN_PASSWORD, SESSION_SECRET, CONTACT_PHONE)
+
+## Pages
+
+| Page | File | Purpose |
+|---|---|---|
+| Home | `index.html` | Hero, highlights, about, trust strip, quote CTA |
+| About | `about.html` | Company intro, why-us |
+| Products | `products.html` | 5 categories with filter + modal |
+| Services | `services.html` | 6 services |
+| Projects | `projects.html` | Work gallery with filter + lightbox |
+| Pricing | `pricing.html` | Indicative rate list (SEO + enquiry) |
+| Service Areas | `service-areas.html` | Kaithal + nearby towns |
+| Contact | `contact.html` | Address, hours, map, quote form, FAQ |
+| Privacy Policy | `privacy-policy.html` | Legal / trust |
+| 404 | `404.html` | Not found page (noindex) |
+
+### Build tools
+
+```bash
+node tools/build-pages.cjs    # pricing / service-areas / privacy / 404 regenerate
+node tools/patch-pages.cjs    # existing pages par footer + links sync
+node tools/patch-cta.cjs      # products/services/projects par pricing CTA
+node tools/patch-nav.cjs      # nav me Pricing item + compact gap
+node tools/bump-assets.cjs    # css/js version bump (immutable cache ke liye)
+node tools/check-links.cjs    # saare local href/src resolve hone ka check
+```
+
+Naye page banane ka flow: `tools/build-pages.cjs` me page definition add karo → `node tools/build-pages.cjs` → `node tools/bump-assets.cjs` → `node tools/check-links.cjs` → commit + deploy.
+
+**Cache note:** `vercel.json` me `/css/*`, `/js/*`, `/images/*` par 1-year immutable cache hai — isliye file badalne par `?v=` version zaroor bump karna hai (`tools/bump-assets.cjs`).
+
+## Analytics
+
+`public/data/info.js` me `gaId: "G-XXXXXXXXXX"` daalne par GA4 load ho jata hai. Tab tak bhi `call_click`, `whatsapp_click` aur `enquiry_submit` events `window.dataLayer` me push hote hain (GTM/GA4 se connect karne ke liye ready).
+
 
 ## How to Run
 
