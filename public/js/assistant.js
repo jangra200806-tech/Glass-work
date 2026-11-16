@@ -157,6 +157,7 @@
   panel.id = "assistant-panel";
   panel.className = "assistant-panel";
   panel.setAttribute("aria-hidden", "true");
+  panel.inert = true;
   panel.innerHTML = `
     <div class="assistant-header">
       <div class="assistant-brand">
@@ -735,6 +736,7 @@
     launcher.addEventListener("click", () => {
       state.open = !state.open;
       panel.setAttribute("aria-hidden", String(!state.open));
+      panel.inert = !state.open;
       panel.classList.toggle("assistant-panel-open", state.open);
       launcher.setAttribute("aria-expanded", String(state.open));
       if (state.open) {
@@ -756,6 +758,7 @@
     closeBtn.addEventListener("click", () => {
       state.open = false;
       panel.setAttribute("aria-hidden", "true");
+      panel.inert = true;
       panel.classList.remove("assistant-panel-open");
       launcher.setAttribute("aria-expanded", "false");
       hideGreeting();
@@ -822,6 +825,7 @@
     // Initial render
     state.open = false;
     panel.setAttribute("aria-hidden", "true");
+    panel.inert = true;
     panel.classList.remove("assistant-panel-open");
     state.welcomeAdded = false;
     state.messages = [];

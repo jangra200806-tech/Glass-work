@@ -5,8 +5,8 @@
 
 :root {
   --navy: #102D4F;
-  --sky: #1685D4;
-  --sky-dark: #1170B5;
+  --sky: #0F6FB3;
+  --sky-dark: #0B5F9C;
   --light-blue: #48B8D8;
   --white: #FFFFFF;
   --grey-bg: #F4F7FA;
@@ -764,22 +764,35 @@ body.nav-open {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  gap: 0;
   z-index: 3;
 }
 
 .hero-dots button {
-  width: 10px;
-  height: 10px;
+  position: relative;
+  width: 28px;
+  height: 28px;
   padding: 0;
   border: none;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--white) 45%, transparent);
+  background: transparent;
   cursor: pointer;
+}
+
+.hero-dots button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--white) 45%, transparent);
+  transform: translate(-50%, -50%);
   transition: background 0.3s ease, width 0.3s ease;
 }
 
-.hero-dots button.active {
+.hero-dots button.active::before {
   width: 24px;
   background: var(--sky);
 }
@@ -1514,9 +1527,9 @@ section[id] {
   font-size: 0.9rem;
 }
 
-.footer-links h4,
-.footer-products h4,
-.footer-contact h4 {
+.footer-links h3,
+.footer-products h3,
+.footer-contact h3 {
   font-size: 1.1rem;
   margin-bottom: 1.25rem;
   color: var(--white);
