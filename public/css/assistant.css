@@ -230,7 +230,7 @@
   border-radius: 20px;
   box-shadow: 0 24px 70px rgba(16, 45, 79, 0.26);
   z-index: 1200;
-  display: flex;
+  display: none;
   flex-direction: column;
   overflow: hidden;
   transform: translateY(16px);
@@ -240,6 +240,7 @@
 }
 
 .assistant-panel-open {
+  display: flex;
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;

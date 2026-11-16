@@ -41,7 +41,7 @@
   /* ---------- Slider State ---------- */
   let currentSlide = 0;
   let slideInterval = null;
-  const slideIntervalTime = 3000;
+  const slideIntervalTime = 6000;
   const slides = document.querySelectorAll(".hero-slide");
   const totalSlides = slides.length;
   const dots = document.querySelectorAll(".hero-dots button, .slider-dots button");
@@ -515,7 +515,7 @@
     /* Safety net: never leave content hidden */
     setTimeout(() => {
       items.forEach((el) => el.classList.add("active"));
-    }, 1500);
+    }, 5000);
   }
 
   /* ---------- Init ---------- */

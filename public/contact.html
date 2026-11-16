@@ -30,12 +30,9 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
   <link rel="apple-touch-icon" href="favicon-192.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"></noscript>
-  <link rel="stylesheet" href="css/style.css?v=20261116a11y">
-  <link rel="stylesheet" href="css/assistant.css?v=20261115chatbig">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=20261116perf">
   <!-- header-v6 -->
   <style id="gw-header-css">
 /* ========= MAA MANSA DEVI GLASS WORKS — HEADER (gw-*) ========= */
@@ -324,7 +321,7 @@ body.gw-menu-open{overflow:hidden;}
   </div>
 
   <script src="data/info.js?v=20261112v" defer></script>
-  <script src="js/script.js?v=20261112v" defer></script>
+  <script src="js/script.js?v=20261116perf" defer></script>
 
   <script type="application/ld+json">
     {
@@ -382,8 +379,28 @@ body.gw-menu-open{overflow:hidden;}
       ]
     }
   </script>
-  <script src="js/assistant-knowledge.js?v=20261112v" defer></script>
-  <script src="js/assistant.js?v=20261116a11y" defer></script>
+  <script>
+    (function () {
+      function loadAssistant() {
+        var css = document.createElement("link");
+        css.rel = "stylesheet";
+        css.href = "css/assistant.css?v=20261116lazy";
+        document.head.appendChild(css);
+        var knowledge = document.createElement("script");
+        knowledge.src = "js/assistant-knowledge.js?v=20261112v";
+        knowledge.onload = function () {
+          var script = document.createElement("script");
+          script.src = "js/assistant.js?v=20261116lazy";
+          document.body.appendChild(script);
+        };
+        document.body.appendChild(knowledge);
+      }
+      window.addEventListener("load", function () {
+        if ("requestIdleCallback" in window) requestIdleCallback(loadAssistant, { timeout: 3000 });
+        else setTimeout(loadAssistant, 2000);
+      });
+    })();
+  </script>
   <script id="gw-header-js">
 (function () {
   "use strict";

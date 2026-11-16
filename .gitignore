@@ -5,3 +5,6 @@ public/images/uploads/*
 
 .vercel
 .env*
+
+# Local scratch folder (reference images / downloads) — not part of the site
+New folder=========/
