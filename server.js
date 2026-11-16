@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // API routes
 app.post('/api/chat', require('./api/chat'));
+app.post('/api/enquiry', require('./api/enquiry'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/projects', require('./routes/projects'));
 app.use('/api/enquiries', require('./routes/enquiries'));

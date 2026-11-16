@@ -406,6 +406,8 @@
   }
 
   /* ---------- Contact Form ---------- */
+  const FALLBACK_ENDPOINT = String(BIZ.enquiryFallbackEndpoint || "").trim();
+
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -413,10 +415,12 @@
       const phoneField = contactForm.querySelector("#phone");
       const serviceField = contactForm.querySelector("#service");
       const messageField = contactForm.querySelector("#message");
+      const companyField = contactForm.querySelector("#company");
       const name = nameField ? nameField.value.trim() : "";
       const phone = phoneField ? phoneField.value.trim() : "";
       const service = serviceField ? serviceField.value.trim() : "";
       const message = messageField ? messageField.value.trim() : "";
+      const company = companyField ? companyField.value.trim() : "";
       if (!name || !phone) {
         showFormMsg("Naam aur phone number zaroori hain.", "error");
         return;
@@ -430,36 +434,103 @@
       const originalText = btn.textContent;
       btn.textContent = "Sending...";
       btn.disabled = true;
-      if (WHATSAPP_DIGITS) {
-        const waMsg = `*New Enquiry from MAA MANSA DEVI GLASS WORKS Website*\n*Name:* ${name}\n*Phone:* ${phone}\n*Service:* ${service}\n*Message:* ${message}`;
-        const waUrl = `https://wa.me/${WHATSAPP_DIGITS}?text=${encodeURIComponent(waMsg)}`;
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.disabled = false;
-          contactForm.reset();
-          showFormMsg("Opening WhatsApp to send your enquiry...", "success");
-          window.open(waUrl, "_blank");
-        }, 800);
-      } else {
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.disabled = false;
-          contactForm.reset();
-          showFormMsg("Thank you! Please call or WhatsApp us directly.", "info");
-        }, 1200);
+
+      const waMsg = `*New Enquiry from MAA MANSA DEVI GLASS WORKS Website*\n*Name:* ${name}\n*Phone:* ${phone}\n*Service:* ${service}\n*Message:* ${message}`;
+      const waUrl = WHATSAPP_DIGITS
+        ? `https://wa.me/${WHATSAPP_DIGITS}?text=${encodeURIComponent(waMsg)}`
+        : "";
+
+      /* Popup blockers se bachein: tab user ke click gesture me hi khol lo,
+         turant WhatsApp par bhej do, aur email/sheet copy background me save karo. */
+      let waTab = null;
+      if (waUrl) {
+        waTab = window.open("", "_blank");
+        if (waTab) {
+          waTab.location = waUrl;
+        }
       }
+
+      showFormMsg("Enquiry bhej rahe hain...", "info");
+
+      const payload = {
+        name,
+        phone,
+        service,
+        message,
+        company,
+        page: window.location.pathname
+      };
+
+      const sendToServer = fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+        .then((res) => res.json().then((data) => ({ ok: res.ok && data && data.ok !== false, data })))
+        .catch(() => ({ ok: false, data: null }));
+
+      const sendToFallback = FALLBACK_ENDPOINT
+        ? fetch(FALLBACK_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          }).then((res) => res.ok).catch(() => false)
+        : Promise.resolve(false);
+
+      Promise.all([sendToServer, sendToFallback]).then(([server, fallback]) => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        contactForm.reset();
+
+        const saved = server.ok || fallback;
+        if (waUrl && waTab) {
+          showFormMsg(
+            saved
+              ? "Enquiry save ho gayi. WhatsApp par Send dabakar message bhejein — hum jaldi reply karenge."
+              : "WhatsApp par message bhejein. Ye bhi humein WhatsApp par hi reply milega.",
+            saved ? "success" : "info",
+            waTab ? "" : waUrl
+          );
+        } else if (waUrl) {
+          showFormMsg(
+            "WhatsApp tab block ho gaya. Neeche link par click karke enquiry bhejein.",
+            "info",
+            waUrl
+          );
+        } else if (saved) {
+          showFormMsg("Thank you! Hum 24 ghante ke andar reply karenge.", "success");
+        } else {
+          showFormMsg("Thank you! Please call or WhatsApp us directly.", "info");
+        }
+      });
     });
   }
 
-  function showFormMsg(text, type) {
+  function showFormMsg(text, type, linkUrl) {
     if (!formMsg) return;
-    formMsg.textContent = text;
+    formMsg.textContent = "";
     formMsg.style.fontWeight = "600";
     formMsg.style.minHeight = "1.25rem";
     if (type === "success") formMsg.style.color = "var(--success)";
     else if (type === "error") formMsg.style.color = "var(--danger)";
     else formMsg.style.color = "var(--sky-dark)";
-    setTimeout(() => { formMsg.textContent = ""; }, 6000);
+
+    const line = document.createElement("span");
+    line.textContent = text;
+    formMsg.appendChild(line);
+
+    if (linkUrl) {
+      const link = document.createElement("a");
+      link.href = linkUrl;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.textContent = " WhatsApp par kholein";
+      link.style.color = "inherit";
+      link.style.textDecoration = "underline";
+      formMsg.appendChild(link);
+    }
+
+    setTimeout(() => { formMsg.textContent = ""; }, 9000);
   }
 
   /* ---------- Populate Service Dropdown ---------- */

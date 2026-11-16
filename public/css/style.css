@@ -1475,6 +1475,26 @@ section[id] {
   min-height: 1.25rem;
 }
 
+.form-hint {
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-muted, #5b6b7f);
+  text-align: center;
+}
+
+/* Honeypot field — screen readers aur bots dono ke liye invisible */
+.hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* ================= FOOTER ================= */
 .footer {
   background: var(--navy);

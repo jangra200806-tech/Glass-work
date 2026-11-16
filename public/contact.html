@@ -221,7 +221,13 @@ body.gw-menu-open{overflow:hidden;}
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
               </div>
+              <!-- Honeypot: bots bharte hain, asli user ko dikhta nahi -->
+              <div class="hp-field" aria-hidden="true">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+              </div>
               <button type="submit" class="btn-primary btn-block">Send Message</button>
+              <p class="form-hint">Aapka enquiry WhatsApp aur email — dono par bhej diya jayega. Hum 24 ghante ke andar reply karte hain.</p>
               <div class="form-msg" id="form-msg"></div>
             </form>
           </div>
