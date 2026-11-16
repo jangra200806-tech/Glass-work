@@ -227,12 +227,22 @@
     }
   }
 
-  /* ---------- Render Products ---------- */
+  /* ---------- Render Products ----------
+     Content HTML me already static hai (SEO ke liye). Agar grid khaali hai
+     (fallback) to data se render karo, warna sirf filter chalao. */
   function renderProducts(filter = "all") {
     if (!productsGrid) return;
+    const cards = productsGrid.querySelectorAll(".product-card");
+    if (cards.length) {
+      cards.forEach((card) => {
+        const show = filter === "all" || card.dataset.category === filter;
+        card.classList.toggle("is-hidden", !show);
+      });
+      return;
+    }
     const products = BUSINESS.products.filter((p) => filter === "all" || p.category === filter);
     productsGrid.innerHTML = products.map((p) => `
-      <article class="product-card">
+      <article class="product-card" data-category="${p.category}">
         <div class="product-img-wrap">
           ${p.image
             ? `<img src="${p.image}" alt="${p.title} — ${p.category} work by MAA MANSA DEVI GLASS WORKS" loading="lazy" decoding="async" width="800" height="520" onerror="this.src='images/placeholder.svg'"><span class="product-img-tag">${p.category}</span>`
@@ -252,7 +262,7 @@
 
   /* ---------- Render Services ---------- */
   function renderServices() {
-    if (!servicesGrid) return;
+    if (!servicesGrid || servicesGrid.children.length) return;
     servicesGrid.innerHTML = BUSINESS.services.map((s) => `
       <div class="service-card">
         <div class="service-icon">🛠️</div>
@@ -265,7 +275,7 @@
 
   /* ---------- Render Why Choose Us ---------- */
   function renderWhyUs() {
-    if (!whyGrid) return;
+    if (!whyGrid || whyGrid.children.length) return;
     whyGrid.innerHTML = BUSINESS.whyUs.map((w) => `
       <div class="why-card">
         <div class="why-icon">✦</div>
@@ -278,17 +288,19 @@
   /* ---------- Render FAQs ---------- */
   function renderFaqs() {
     if (!faqGrid || !BUSINESS.faqs) return;
-    faqGrid.innerHTML = BUSINESS.faqs.map((item, i) => `
-      <div class="faq-card">
-        <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-${i}">
-          <span class="faq-q">${item.q}</span>
-          <span class="faq-arrow" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-answer" id="faq-answer-${i}" hidden>
-          <p>${item.a}</p>
+    if (!faqGrid.children.length) {
+      faqGrid.innerHTML = BUSINESS.faqs.map((item, i) => `
+        <div class="faq-card">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-${i}">
+            <span class="faq-q">${item.q}</span>
+            <span class="faq-arrow" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-answer-${i}" hidden>
+            <p>${item.a}</p>
+          </div>
         </div>
-      </div>
-    `).join("");
+      `).join("");
+    }
 
     faqGrid.querySelectorAll(".faq-question").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -305,6 +317,14 @@
   /* ---------- Render Projects ---------- */
   function renderProjects(filter = "all") {
     if (!projectsGrid) return;
+    const cards = projectsGrid.querySelectorAll(".project-card");
+    if (cards.length) {
+      cards.forEach((card) => {
+        const show = filter === "all" || card.dataset.category === filter;
+        card.classList.toggle("is-hidden", !show);
+      });
+      return;
+    }
     const projects = BUSINESS.projects.filter((p) => filter === "all" || p.category === filter);
     projectsGrid.innerHTML = projects.map((p) => `
       <article class="project-card" data-category="${p.category}">
@@ -319,23 +339,28 @@
         </div>
       </article>
     `).join("");
+  }
 
-    document.querySelectorAll(".project-card").forEach((card) => {
-      card.addEventListener("click", () => {
-        const img = card.querySelector("img");
-        if (!img) return;
-        const title = card.querySelector("h3").textContent;
-        const category = card.querySelector(".project-category").textContent;
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImg = document.getElementById("lightbox-img");
-        const lightboxCaption = document.getElementById("lightbox-caption");
-        if (!lightbox || !lightboxImg || !lightboxCaption) return;
-        lightboxImg.src = img.src;
-        lightboxImg.alt = title;
-        lightboxCaption.textContent = `${title} — ${category}`;
-        lightbox.classList.add("open");
-        document.body.style.overflow = "hidden";
-      });
+  /* ---------- Project Lightbox (event delegation — static cards par bhi chale) ---------- */
+  if (projectsGrid) {
+    projectsGrid.addEventListener("click", (e) => {
+      const card = e.target.closest(".project-card");
+      if (!card) return;
+      const img = card.querySelector("img");
+      if (!img) return;
+      const titleEl = card.querySelector("h3");
+      const catEl = card.querySelector(".project-category");
+      const title = titleEl ? titleEl.textContent : "";
+      const category = catEl ? catEl.textContent : "";
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxCaption = document.getElementById("lightbox-caption");
+      if (!lightbox || !lightboxImg || !lightboxCaption) return;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = title;
+      lightboxCaption.textContent = `${title} — ${category}`;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
     });
   }
 

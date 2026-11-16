@@ -4,6 +4,11 @@
    (linked after style.css)
    ======================================== */
 
+/* ================= FILTER (static cards) ================= */
+.is-hidden {
+  display: none !important;
+}
+
 /* ================= RATE LIST (pricing page) ================= */
 .rate-table-wrap {
   margin-top: 3rem;

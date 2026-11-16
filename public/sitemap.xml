@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://maa-mansa-devi-glass-works.vercel.app/</loc>
     <lastmod>2026-11-16</lastmod>
@@ -30,6 +30,78 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+        <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/office-glass-partition.jpg</image:loc>
+      <image:title>Office Glass Partition — Glass project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/frameless-glass-partition.webp</image:loc>
+      <image:title>Frameless Glass Partition — Glass project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/glass-shower-enclosure.jpg</image:loc>
+      <image:title>Glass Shower Enclosure — Glass project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/glass-staircase-railing.jpg</image:loc>
+      <image:title>Glass Staircase Railing — Glass project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/modular-kitchen-glass.jpg</image:loc>
+      <image:title>Modular Kitchen Glass Cabinets — Glass project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/designer-etched-glass-pattern.jpg</image:loc>
+      <image:title>Designer Etched Glass — Glass project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/floral-etched-glass-window.jpg</image:loc>
+      <image:title>Floral Etched Glass Panel — Glass project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/wired-glass-panel.jpg</image:loc>
+      <image:title>Patterned &amp; Wired Glass — Glass project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/glass-shop-display-installation.jpg</image:loc>
+      <image:title>Glass Shop Display — Glass project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/shop-signboard.jpg</image:loc>
+      <image:title>Our Shop Signboard — Glass project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/steel-main-gate.jpg</image:loc>
+      <image:title>Steel Main Gate — Steel project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/stainless-steel-glass-railing.jpg</image:loc>
+      <image:title>Stainless Steel &amp; Glass Railing — Steel project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/glass-steel-stair-railing.jpg</image:loc>
+      <image:title>Glass &amp; Steel Stair Railing — Steel project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/aluminium-office-partition.jpg</image:loc>
+      <image:title>Aluminium-Framed Glass Partition — Aluminium project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/upvc-window-system.jpg</image:loc>
+      <image:title>UPVC Windows &amp; Doors — UPVC project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/acp-facade-cladding.jpg</image:loc>
+      <image:title>Building Facade Cladding — ACP project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/projects/aluminium-blue-modular-kitchen.jpg</image:loc>
+      <image:title>Blue Aluminium Modular Kitchen — Aluminium project by MAA MANSA DEVI GLASS WORKS in Kaithal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maa-mansa-devi-glass-works.vercel.app/images/logo-full.svg</image:loc>
+      <image:title>MAA MANSA DEVI GLASS WORKS logo</image:title>
+    </image:image>
   <url>
     <loc>https://maa-mansa-devi-glass-works.vercel.app/contact</loc>
     <lastmod>2026-11-16</lastmod>

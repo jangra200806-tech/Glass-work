@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const PUBLIC = path.join(__dirname, "..", "public");
-const VERSION = "20261116trust";
+const VERSION = "20261116seo";
 const files = fs.readdirSync(PUBLIC).filter((f) => f.endsWith(".html"));
 
 let touched = 0;

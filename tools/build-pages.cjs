@@ -16,7 +16,7 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const PUBLIC = path.join(ROOT, "public");
 const SITE = "https://maa-mansa-devi-glass-works.vercel.app";
-const VERSION = "20261116trust";
+const VERSION = "20261116seo";
 
 /* ---------- Shared blocks extracted from the existing pages ---------- */
 
